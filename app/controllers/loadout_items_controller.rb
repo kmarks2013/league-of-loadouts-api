@@ -1,0 +1,2 @@
+class LoadoutItemsController < ApplicationController
+end

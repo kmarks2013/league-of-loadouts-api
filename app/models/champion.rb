@@ -1,0 +1,9 @@
+class Champion < ApplicationRecord
+    has_many :loadouts
+    has_many :users, through: :loadouts
+    has_many :champion_roles
+    has_many :roles, through: :champion_roles
+    has_many :items, through: :loadouts
+
+
+end
