@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_145115) do
   create_table "loadouts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "champion_id", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["champion_id"], name: "index_loadouts_on_champion_id"

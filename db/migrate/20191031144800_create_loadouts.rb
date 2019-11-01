@@ -3,6 +3,7 @@ class CreateLoadouts < ActiveRecord::Migration[6.0]
     create_table :loadouts do |t|
       t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :champion, null: false, foreign_key: true
+      t.string :name
 
       t.timestamps
     end

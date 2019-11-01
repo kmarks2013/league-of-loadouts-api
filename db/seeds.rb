@@ -2,6 +2,8 @@ User.destroy_all
 Champion.destroy_all
 Role.destroy_all
 Item.destroy_all
+Loadout.destroy_all
+LoadoutItem.destroy_all
 
 
 User.reset_pk_sequence
@@ -9,6 +11,7 @@ Champion.reset_pk_sequence
 Role.reset_pk_sequence
 Item.reset_pk_sequence
 Loadout.reset_pk_sequence
+LoadoutItem.reset_pk_sequence
 
 
 champion_json = RestClient.get('http://ddragon.leagueoflegends.com/cdn/9.21.1/data/en_US/champion.json')
@@ -32,11 +35,18 @@ champions_hash.each do |(champion, champion_info)|
         Champion.create(
             name: champion_info['name'],
             blurb: champion_info['blurb'],
-            image: champion_info['image']['sprite'],
+            image: champion_info['image']['full'],
             api_id: champion_info['id']
         )
     # end
 end
+
+# Loadouts
+
+# testA = Loadout.create(user:kenny, champion: champion.first, name: 'test build')
+# testB = Loadout.create(user:kenny, champion: champion.second, name: 'test build 2')
+# testC = Loadout.create(user:kim, champion: champion.first, name: 'test build 3')
+# testD = Loadout.create(user:kim, champion: champion.third, name: 'test build 4')
 
 # Items
 
@@ -48,6 +58,17 @@ items_hash.each do |(item, item_info)|
             tags: item_info['tags']
         )
 end
+
+# # LoadoutItems
+# item1 = LoadoutItem.create(loadout:testA, item: item.first)
+# item2 = LoadoutItem.create(loadout:testA, item: item.second)
+# item3 = LoadoutItem.create(loadout:testA, item: item.third)
+# item4 = LoadoutItem.create(loadout:testA, item: item.fourth)
+# item5 = LoadoutItem.create(loadout:testB, item: item.first)
+# item6 = LoadoutItem.create(loadout:testB, item: item.second)
+
+
+
 # Roles
 fighter = Role.create(name:"fighter")
 tank = Role.create(name:"tank")
