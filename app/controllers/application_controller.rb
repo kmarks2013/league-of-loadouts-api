@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
     def hmac_secret
-        'klagmar'
+        ENV['JWT_SECRET_KEY']
     end
 end
