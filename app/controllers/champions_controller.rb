@@ -5,7 +5,7 @@ class ChampionsController < ApplicationController
     end
 
     def show
-        champion = champion.find(params:id)
+        champion = champion.find(params[:id])
         render json: champion
     end
 end
