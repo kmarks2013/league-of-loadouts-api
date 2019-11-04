@@ -6,7 +6,7 @@ class LoadoutsController < ApplicationController
     end
 
     def show
-        loadout = Loadout.find(params[:id) 
+        loadout = Loadout.find(params[:id]) 
         render json: loadout
     end
 
