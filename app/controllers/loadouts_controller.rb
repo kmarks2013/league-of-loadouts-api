@@ -12,7 +12,7 @@ class LoadoutsController < ApplicationController
 
     def create
         loadout = Loadout.create(loadout_params)
-        if loadout.save?
+        if loadout.save
             render json: loadout
         end
     end
