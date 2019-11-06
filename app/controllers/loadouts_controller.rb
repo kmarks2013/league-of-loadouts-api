@@ -27,7 +27,7 @@ class LoadoutsController < ApplicationController
     def destroy 
         loadout = Loadout.find(params[:id])
         loadout.destroy
-        loadouts = Lodouts.all
+        loadouts = Loadouts.all
         render json: loadouts
     end
 
