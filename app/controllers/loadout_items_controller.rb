@@ -2,7 +2,7 @@ class LoadoutItemsController < ApplicationController
 
     def index
         loadout_items = LoadoutItem.all
-        render json: loadouts_items
+        render json: loadout_items
     end
 
     def show
@@ -11,10 +11,15 @@ class LoadoutItemsController < ApplicationController
     end
 
     def create
-        loadout_item = LoadoutItem.create(loadout_item_params)
-        if loadout_item.save
-            render json: loadout_item
+        # byebug
+       loadout_item_params[:items_array].each do | item_id |
+            item = Item.find(item_id.to_i)
+            loadout_item = LoadoutItem.create(loadout_id: loadout_item_params[:loadout_id], item_id: item.id)
+            
         end
+        loadout = Loadout.find(loadout_item_params[:loadout_id])
+        render json: loadout
+
     end
 
     def delete
@@ -22,9 +27,13 @@ class LoadoutItemsController < ApplicationController
         loadout_item.destroy
         loadout_items= LoadoutItem.all
         render json: loadout_items
+    end
+
+
     private
 
-    def loadout_params
-        params.permit(:loadout_id, :item_id)
+    def loadout_item_params
+        params.permit(:loadout_id, items_array: [])
     end
+
 end
