@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
     # validates_presence_of :username
     # validates_uniqueness_of :password, :case_sensitive => false
-
+    
 end
