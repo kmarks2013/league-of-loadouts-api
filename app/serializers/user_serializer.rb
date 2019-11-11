@@ -2,5 +2,5 @@ class UserSerializer < ActiveModel::Serializer
   attributes :id, :name, :username, :age
   has_many :loadouts
   has_many :champions
-  # has_many :loadout_items
+ 
 end
