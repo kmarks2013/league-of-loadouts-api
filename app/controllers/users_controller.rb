@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     def update
         user = User.find(params[:id])
         if user.update(user_params)
-            render json: user
+            render json: user, include: '**'
         end
     end
     
@@ -39,5 +39,8 @@ class UsersController < ApplicationController
     def user_params
         params.permit(:name, :username, :password, :age)
     end
+
+    # def update_params
+    #     params.permit
 
 end
