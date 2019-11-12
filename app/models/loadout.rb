@@ -5,7 +5,12 @@ class Loadout < ApplicationRecord
   has_many :items, through: :loadout_items
 
   def user_name
-    self.user.username
+    begin
+      return self.user.username
+      raise 'error'
+    rescue
+      puts self.name
+    end
   end
 
   def champion_name
