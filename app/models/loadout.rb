@@ -17,4 +17,13 @@ class Loadout < ApplicationRecord
     self.champion.name
   end
 
+  def user_id
+    begin
+      return self.user.id
+      raise 'error'
+    rescue
+      puts self. name
+    end
+  end
+
 end
