@@ -13,7 +13,7 @@ Item.reset_pk_sequence
 Loadout.reset_pk_sequence
 LoadoutItem.reset_pk_sequence
 
-url = 
+
 champions_json = RestClient.get('http://ddragon.leagueoflegends.com/cdn/9.21.1/data/en_US/champion.json')
 items_json = RestClient.get('http://ddragon.leagueoflegends.com/cdn/9.21.1/data/en_US/item.json')
 

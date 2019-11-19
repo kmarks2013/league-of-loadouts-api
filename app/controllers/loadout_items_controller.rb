@@ -25,8 +25,8 @@ class LoadoutItemsController < ApplicationController
     def destroy
         loadout_item = LoadoutItem.find_by(item_id: params[:item_id], loadout_id: params[:loadout_id] )
         loadout_item.destroy
-        loadout_items= LoadoutItem.all
-        render json: loadout_items
+        loadout = Loadout.find(params[:loadout_id])
+        render json: loadout
     end
 
 
