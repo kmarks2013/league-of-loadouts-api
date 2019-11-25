@@ -18,7 +18,7 @@ class UsersController < ApplicationController
             token = JWT.encode(payload, hmac_secret, 'HS256')
             render json: {user: user, token: token}
         else
-            render json: {errors: user.errors.full_messages}
+            render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
