@@ -6,7 +6,9 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    # validates_presence_of :username
-    # validates_uniqueness_of :password, :case_sensitive => false
+    validates :username, presence: true
+    validates :username, uniqueness: {message: 
+    "This username has already been taken"}
+    
     
 end
