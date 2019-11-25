@@ -64,6 +64,7 @@ end
 # Items
 
 items_hash.each do |(item, item_info)|
+    if item_info['gold']['purchasable'] == true && item_info['maps']['11'] == true
         Item.create(
             name: item_info['name'],
             description: (Nokogiri::HTML(item_info['description']).content.split('<br>').join('')),
@@ -71,6 +72,7 @@ items_hash.each do |(item, item_info)|
             tags: item_info['tags'],
             plaintext: item_info['plaintext']
         )
+    end
 end
 
 nums = items_hash.keys
