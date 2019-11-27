@@ -70,19 +70,20 @@ items_hash.each do |(item, item_info)|
             description: (Nokogiri::HTML(item_info['description']).content.split('<br>').join('')),
             cost: item_info['gold']['base'],
             tags: item_info['tags'],
-            plaintext: item_info['plaintext']
+            plaintext: item_info['plaintext'],
+            image: item_info['image']['full']
         )
     end
 end
 
-nums = items_hash.keys
+# nums = items_hash.keys
 
-Item.all.each do |item|
-    item.update(
-        api_num: nums[0]
-    )
-    nums.shift
-end
+# Item.all.each do |item|
+#     item.update(
+#         api_num: nums[0]
+#     )
+#     nums.shift
+# end
 
 # # LoadoutItems
 # item1 = LoadoutItem.create(loadout:testA, item: item.first)
