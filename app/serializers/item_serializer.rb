@@ -1,5 +1,5 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :cost, :description, :plaintext, :api_num
+  attributes :id, :name, :cost, :description, :plaintext, :image
   # has_many :loadout_items
 end
 

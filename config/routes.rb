@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stats
   resources :champion_roles
   resources :roles
   resources :loadout_items,  only: [:index, :show, :create]
