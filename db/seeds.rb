@@ -55,29 +55,29 @@ Champion.all.each do |champion|
         lore: champion_info['lore']
     )
 
-    # Stats.create(
-    #     champion_id: champion.id,
-    #     hp: champion_stats["hp"],
-    #     hpperlevel: champion_stats["hpperlevel"],
-    #     mp: champion_stats["mp"],
-    #     mpperlevel: champion_stats["mpperlevel"],
-    #     movespeed: champion_stats["movespeed"],
-    #     armor: champion_stats["armor"],
-    #     armorperlevel: champion_stats["armorperlevel"],
-    #     spellblock: champion_stats["spellblock"],
-    #     spellblockperlevel: champion_stats["spellblockperlevel"],
-    #     attackrange: champion_stats["attackrange"],
-    #     hpregen: champion_stats["hpregen"],
-    #     hpregenperlevel: champion_stats["hpregenperlevel"],
-    #     mpregen: champion_stats["mpregen"],
-    #     mpregenperlevel: champion_stats["mpregenperlevel"],
-    #     crit: champion_stats["crit"],
-    #     critperlevel: champion_stats["critperlevel"],
-    #     attackdamage: champion_stats["attackdamage"],
-    #     attackdamageperlevel: champion_stats["attackdamageperlevel"],
-    #     attackspeedperlevel: champion_stats["attackspeedperlevel"],
-    #     attackspeed: champion_stats["attackspeed"]
-    # )
+    Stat.create(
+        champion_id: champion.id,
+        hp: champion_stats["hp"],
+        hpperlevel: champion_stats["hpperlevel"],
+        mp: champion_stats["mp"],
+        mpperlevel: champion_stats["mpperlevel"],
+        movespeed: champion_stats["movespeed"],
+        armor: champion_stats["armor"],
+        armorperlevel: champion_stats["armorperlevel"],
+        spellblock: champion_stats["spellblock"],
+        spellblockperlevel: champion_stats["spellblockperlevel"],
+        attackrange: champion_stats["attackrange"],
+        hpregen: champion_stats["hpregen"],
+        hpregenperlevel: champion_stats["hpregenperlevel"],
+        mpregen: champion_stats["mpregen"],
+        mpregenperlevel: champion_stats["mpregenperlevel"],
+        crit: champion_stats["crit"],
+        critperlevel: champion_stats["critperlevel"],
+        attackdamage: champion_stats["attackdamage"],
+        attackdamageperlevel: champion_stats["attackdamageperlevel"],
+        attackspeedperlevel: champion_stats["attackspeedperlevel"],
+        attackspeed: champion_stats["attackspeed"]
+    )
 
 end
 

@@ -12,7 +12,7 @@ class CreateStats < ActiveRecord::Migration[6.0]
       t.integer :spellblock
       t.integer :spellblockperlevel
       t.integer :attackrange
-      t.integer :hpegen
+      t.integer :hpregen
       t.integer :hpregenperlevel
       t.integer :mpregen
       t.integer :mpregenperlevel

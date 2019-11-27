@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_222227) do
     t.integer "spellblock"
     t.integer "spellblockperlevel"
     t.integer "attackrange"
-    t.integer "hpegen"
+    t.integer "hpregen"
     t.integer "hpregenperlevel"
     t.integer "mpregen"
     t.integer "mpregenperlevel"
