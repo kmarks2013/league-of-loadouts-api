@@ -28,6 +28,7 @@ avi = User.create(name:"Avi", password:'1', username:'ivanister', age:25)
 matt = User.create(name:"Matt", password:'1', username:'matt', age:27)
 
 # Champions
+# for each champion i want to create an instances of the stat model.
 
 champions_hash.each do |(champion, champion_info)|
     # byebug
@@ -39,6 +40,7 @@ champions_hash.each do |(champion, champion_info)|
         api_id: champion_info['id'],
         title: champion_info['title']
     )
+
     # end
 end
 
@@ -48,10 +50,37 @@ Champion.all.each do |champion|
     champion_json = RestClient.get(url + name + '.json')
     champion_data = JSON.parse(champion_json)['data']
     champion_info = champion_data[name]
+    champion_stats = champion_info['stats']
     champion.update(
         lore: champion_info['lore']
     )
+
+    Stat.create(
+        champion_id: champion.id,
+        hp: champion_stats["hp"],
+        hpperlevel: champion_stats["hpperlevel"],
+        mp: champion_stats["mp"],
+        mpperlevel: champion_stats["mpperlevel"],
+        movespeed: champion_stats["movespeed"],
+        armor: champion_stats["armor"],
+        armorperlevel: champion_stats["armorperlevel"],
+        spellblock: champion_stats["spellblock"],
+        spellblockperlevel: champion_stats["spellblockperlevel"],
+        attackrange: champion_stats["attackrange"],
+        hpregen: champion_stats["hpregen"],
+        hpregenperlevel: champion_stats["hpregenperlevel"],
+        mpregen: champion_stats["mpregen"],
+        mpregenperlevel: champion_stats["mpregenperlevel"],
+        crit: champion_stats["crit"],
+        critperlevel: champion_stats["critperlevel"],
+        attackdamage: champion_stats["attackdamage"],
+        attackdamageperlevel: champion_stats["attackdamageperlevel"],
+        attackspeedperlevel: champion_stats["attackspeedperlevel"],
+        attackspeed: champion_stats["attackspeed"]
+    )
+
 end
+
 
 # Loadouts
 

@@ -4,6 +4,12 @@ class Champion < ApplicationRecord
     has_many :champion_roles
     has_many :roles, through: :champion_roles
     has_many :items, through: :loadouts
+    has_one :stat
+
+    def stats
+        self.stat
+    end
+
 
 
 end

@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  champion: one
+  hp: 1
+  hpperlevel: 1
+  mp: 1
+  mpperlevel: 1
+  movespeed: 1
+  armor: 1
+  armorperlevel: 1
+  spellblock: 1
+  spellblockperlevel: 1
+  attackrange: 
+  hpegen: 1
+  hpregenperlevel: 1
+  mpregen: 1
+  mpregenperlevel: 1
+  crit: 1
+  critperlevel: 1
+  attackdamage: 1
+  attackdamageperlevel: 1
+  attackspeedperlevel: 1
+  attackspeed: 1
+
+two:
+  champion: two
+  hp: 1
+  hpperlevel: 1
+  mp: 1
+  mpperlevel: 1
+  movespeed: 1
+  armor: 1
+  armorperlevel: 1
+  spellblock: 1
+  spellblockperlevel: 1
+  attackrange: 
+  hpegen: 1
+  hpregenperlevel: 1
+  mpregen: 1
+  mpregenperlevel: 1
+  crit: 1
+  critperlevel: 1
+  attackdamage: 1
+  attackdamageperlevel: 1
+  attackspeedperlevel: 1
+  attackspeed: 1

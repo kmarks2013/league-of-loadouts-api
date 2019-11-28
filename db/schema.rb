@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_193029) do
+ActiveRecord::Schema.define(version: 2019_11_27_222227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,33 @@ ActiveRecord::Schema.define(version: 2019_11_27_193029) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.bigint "champion_id", null: false
+    t.integer "hp"
+    t.integer "hpperlevel"
+    t.integer "mp"
+    t.integer "mpperlevel"
+    t.integer "movespeed"
+    t.integer "armor"
+    t.integer "armorperlevel"
+    t.integer "spellblock"
+    t.integer "spellblockperlevel"
+    t.integer "attackrange"
+    t.integer "hpregen"
+    t.integer "hpregenperlevel"
+    t.integer "mpregen"
+    t.integer "mpregenperlevel"
+    t.integer "crit"
+    t.integer "critperlevel"
+    t.integer "attackdamage"
+    t.integer "attackdamageperlevel"
+    t.integer "attackspeedperlevel"
+    t.integer "attackspeed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["champion_id"], name: "index_stats_on_champion_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
@@ -86,4 +113,5 @@ ActiveRecord::Schema.define(version: 2019_11_27_193029) do
   add_foreign_key "loadout_items", "loadouts"
   add_foreign_key "loadouts", "champions"
   add_foreign_key "loadouts", "users"
+  add_foreign_key "stats", "champions"
 end
