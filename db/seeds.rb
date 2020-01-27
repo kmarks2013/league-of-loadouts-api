@@ -1,17 +1,17 @@
-User.destroy_all
-Champion.destroy_all
-Role.destroy_all
-Item.destroy_all
-Loadout.destroy_all
-LoadoutItem.destroy_all
+# User.destroy_all
+# Champion.destroy_all
+# Role.destroy_all
+# Item.destroy_all
+# Loadout.destroy_all
+# LoadoutItem.destroy_all
 
 
-User.reset_pk_sequence
-Champion.reset_pk_sequence
-Role.reset_pk_sequence
-Item.reset_pk_sequence
-Loadout.reset_pk_sequence
-LoadoutItem.reset_pk_sequence
+# User.reset_pk_sequence
+# Champion.reset_pk_sequence
+# Role.reset_pk_sequence
+# Item.reset_pk_sequence
+# Loadout.reset_pk_sequence
+# LoadoutItem.reset_pk_sequence
 
 
 champions_json = RestClient.get('http://ddragon.leagueoflegends.com/cdn/9.21.1/data/en_US/champion.json')
