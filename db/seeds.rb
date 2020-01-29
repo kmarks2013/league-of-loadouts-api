@@ -1,5 +1,7 @@
 User.destroy_all
+Stat.destroy_all
 Champion.destroy_all
+ChampionRole.destroy_all
 Role.destroy_all
 Item.destroy_all
 Loadout.destroy_all
@@ -7,7 +9,9 @@ LoadoutItem.destroy_all
 
 
 User.reset_pk_sequence
+Stat.reset_pk_sequence
 Champion.reset_pk_sequence
+ChampionRole.reset_pk_sequence
 Role.reset_pk_sequence
 Item.reset_pk_sequence
 Loadout.reset_pk_sequence
