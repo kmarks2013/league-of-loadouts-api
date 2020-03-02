@@ -17,8 +17,8 @@ Item.reset_pk_sequence
 Loadout.reset_pk_sequence
 LoadoutItem.reset_pk_sequence
 
-champions_json = RestClient.get('http://ddragon.leagueoflegends.com/cdn/10.2.1/data/en_US/champion.json')
-items_json = RestClient.get('http://ddragon.leagueoflegends.com/cdn/10.2.1/data/en_US/item.json')
+champions_json = RestClient.get('http://ddragon.leagueoflegends.com/cdn/10.4.1/data/en_US/champion.json')
+items_json = RestClient.get('http://ddragon.leagueoflegends.com/cdn/10.4.1/data/en_US/item.json')
 
 
 champions_hash = JSON.parse(champions_json)['data']
@@ -48,7 +48,7 @@ champions_hash.each do |(champion, champion_info)|
 end
 
 Champion.all.each do |champion|
-    url = 'http://ddragon.leagueoflegends.com/cdn/10.2.1/data/en_US/champion/'
+    url = 'http://ddragon.leagueoflegends.com/cdn/10.4.1/data/en_US/champion/'
     name = champion.api_id
     champion_json = RestClient.get(url + name + '.json')
     champion_data = JSON.parse(champion_json)['data']
