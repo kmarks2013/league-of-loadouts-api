@@ -5,7 +5,7 @@ class AuthController < ApplicationController
         # byebug
         if user && user.authenticate(user_params[:password])
             payload = {user_id: user.id}
-            token = JWT. encode(payload, hmac_secret, 'HS256')
+            token = JWT.encode(payload, hmac_secret, 'HS256')
             render json: {user: user, token: token}
         else
             render json: {errors: ['Unable to match username and password. Please try again.']} , status: :unprocessable_entity
