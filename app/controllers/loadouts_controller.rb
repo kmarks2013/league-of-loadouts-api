@@ -11,6 +11,7 @@ class LoadoutsController < ApplicationController
     end
 
     def create
+        # Goal is to make sure a loadout can not be created unless they have the correct token
         loadout = Loadout.create(loadout_params)
         if loadout.valid?
             render json: loadout
@@ -18,6 +19,7 @@ class LoadoutsController < ApplicationController
     end
 
     def update
+        # Goal is to make sure a user can not be updated unless they have the correct token and it belongs the user who created it
         loadout = Loadout.find(params[:id])
         if loadout.update(loadout_params)
             render json: loadout
@@ -25,7 +27,7 @@ class LoadoutsController < ApplicationController
     end
 
     def destroy 
-        
+        # Goal is to make sure a loadout can not be destroyed unless they have the correct token  and it belongs the user who created it
         loadout = Loadout.find(params[:id])
         loadout.destroy
         loadouts = Loadout.all
