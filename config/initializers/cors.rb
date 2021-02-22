@@ -7,7 +7,8 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins '*'
+    # the origins will be updated for netlify so as not to allow other sites to access the api
+    origins 'http://localhost:3001/'
 
     resource '*',
       headers: :any,
