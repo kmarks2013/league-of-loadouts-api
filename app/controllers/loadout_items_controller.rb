@@ -12,6 +12,7 @@ class LoadoutItemsController < ApplicationController
 
     def create
         # byebug
+        # Goal is to make sure a loadout item  can not be added unless there is a valid auth token and the loadout belongs to that user.
        loadout_item_params[:items_array].each do | item_id |
             item = Item.find(item_id.to_i)
             loadout_item = LoadoutItem.create(loadout_id: loadout_item_params[:loadout_id], item_id: item.id)
@@ -23,6 +24,7 @@ class LoadoutItemsController < ApplicationController
     end
 
     def destroy
+                # Goal is to make sure a loadout item can not be deleted unless there is a valid auth token and the loadout belongs to that user.
         loadout_item = LoadoutItem.find_by(item_id: params[:item_id], loadout_id: params[:loadout_id] )
         loadout_item.destroy
         loadout = Loadout.find(params[:loadout_id])
