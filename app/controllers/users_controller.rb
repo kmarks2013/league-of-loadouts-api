@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     end
 
     def update
+        # Goal is to make sure a user can not be updated unless they have the correct token
         user = User.find(params[:id])
         if user.update(user_params)
             render json: user, include: '**'
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
     end
     
     def destroy
+        # Goal is to make sure a user can not be deleted unless they have the correct token
         user = User.find(params[:id])
         user.destroy
         render json: { }
