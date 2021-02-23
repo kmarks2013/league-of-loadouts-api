@@ -6,6 +6,8 @@ class Champion < ApplicationRecord
     has_many :items, through: :loadouts
     has_one :stat
 
+#   add active record scoping to order the champions by name
+
     def stats
         self.stat
     end
