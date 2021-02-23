@@ -7,7 +7,7 @@ class Champion < ApplicationRecord
     has_one :stat
 
 #   add active record scoping to order the champions by name
-    scope :ordered_by_name, -> {order(name: :asc)}
+    # scope :ordered_by_name, -> {order(name: :asc)}
 
     def stats
         self.stat
