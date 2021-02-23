@@ -4,6 +4,8 @@ class Loadout < ApplicationRecord
   has_many :loadout_items, dependent: :destroy
   has_many :items, through: :loadout_items
 
+  #   add active record scoping to order the loadouts by name or creation order
+
   def user_name
     begin
       return self.user.username
