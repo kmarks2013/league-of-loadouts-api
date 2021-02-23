@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_many :champions, through: :loadouts
     has_many :items, through: :loadouts
 
+#   add active record scoping to order the users by id, or by name
 
     has_secure_password
 
