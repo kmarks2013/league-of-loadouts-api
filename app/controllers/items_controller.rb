@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
     def index
         items = Item.all
-        render json: items.default_order
+        render json: items.ordered_by_name
     end
 
     def show
