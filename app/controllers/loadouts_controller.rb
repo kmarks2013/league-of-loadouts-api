@@ -2,7 +2,7 @@ class LoadoutsController < ApplicationController
 
     def index
         loadouts = Loadout.all
-        render json: loadouts
+        render json: loadouts.ordered_by_creation
     end
 
     def show
