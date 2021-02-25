@@ -5,6 +5,7 @@ class Loadout < ApplicationRecord
   has_many :items, through: :loadout_items
 
   #   add active record scoping to order the loadouts by name or creation order
+  scope :ordered_by_creation, -> { order(created_at: :desc)}
 
   def user_name
     begin
