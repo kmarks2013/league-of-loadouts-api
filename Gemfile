@@ -49,3 +49,7 @@ gem "jwt", "~> 2.2"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails'
+
+group :development, :test do
+  gem 'rspec-rails'
+end
