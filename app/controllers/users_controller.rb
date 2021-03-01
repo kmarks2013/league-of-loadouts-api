@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    # require a
+    require AuthController
 
     def index
         users= User.all
