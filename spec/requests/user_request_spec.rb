@@ -10,6 +10,6 @@ RSpec.describe "Users", type: :request do
     let(:invalid_attributes){
         "username": '',
         "password": "abc",
-        "age": "1",
+        "age": "1"
     }
 end
