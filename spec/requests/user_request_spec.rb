@@ -12,4 +12,13 @@ RSpec.describe "Users", type: :request do
         "password": "abc",
         "age": "1"
     }
+
+    describe "GET /index" do
+        it 'renders the list of users' do
+            User.create!(valid_attributes)
+            get users_url
+            expect(response).to be_successful
+        end
+    end
+
 end
