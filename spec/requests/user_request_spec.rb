@@ -33,4 +33,15 @@ RSpec.describe "Users", type: :request do
         end
     end
 
+    describe "POST /create" do
+        context 'with valid paramters' do
+            it 'creates a new User' do
+                expect {
+                    User.create!(valid_attributes)
+                    post users_url, params: {user: valid_attributes}
+                }.to change(User, :count).by(1)
+            end
+        end
+    end
+
 end
