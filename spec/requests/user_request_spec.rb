@@ -26,12 +26,11 @@ RSpec.describe "Users", type: :request do
     end
 
     describe "GET /show" do
-        context 'with out current user' do
-            it 'renders a specific user or the current user' do
-                user = User.create!(valid_attributes)
-                get user_url(user)
-                expect(response).to be_successful
-            end
+        it 'renders a specific user' do
+            user = User.create!(valid_attributes)
+            get user_url(user)
+            expect(response).to be_successful
         end
     end
+
 end
