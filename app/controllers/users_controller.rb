@@ -18,15 +18,20 @@ class UsersController < ApplicationController
         if user.valid?
             payload = {user_id: user.id}
             token = JWT.encode(payload, hmac_secret, 'HS256')
-            render json: {user: user, token: token}, status: :created
+            render json: {user: user, include: '**', token: token}, status: :created
         else
             render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
     def update
-        current_user.update(update_params)
-        render json:current_user, include: '**', status: :accepted
+        if current_user.update(update_params)
+            render json: current_user, include: '**', status: :accepted
+        else
+            render json: {errors: current_user.errors}
+        end
+        # current_user.update(update_params)
+        # render json:current_user, include: '**', status: :accepted
         # user = User.find(params[:id])
         # if user == current_user
         #     if user.update(update_params)
