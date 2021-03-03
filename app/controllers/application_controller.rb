@@ -16,12 +16,9 @@ class ApplicationController < ActionController::API
             token = request.headers["Authorization"]
             user_token = token.split(' ')[1]
             begin
-                # user_token
                 decoded_token = JWT.decode(user_token, hmac_secret, true, {algorithim: "HS256"})
-        #         byebug
                 User.find(decoded_token[0]['user_id'])
             rescue
-                # byebug
                 nil
             end
         end
