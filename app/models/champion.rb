@@ -12,8 +12,4 @@ class Champion < ApplicationRecord
         self.stat
     end
 
-    def self.default_order
-        order('id ASC')
-    end
-
 end
