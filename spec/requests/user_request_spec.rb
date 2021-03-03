@@ -17,6 +17,12 @@ RSpec.describe "Users", type: :request do
         }
     end
 
+    let(:valid_headers) do
+        {
+            "CONTENT-TYPE": 'application/json'
+        }
+    end
+
     describe "GET /index" do
         it 'renders the list of users' do
             User.create!(valid_attributes)
