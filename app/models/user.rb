@@ -14,7 +14,7 @@ class User < ApplicationRecord
         (?=.*[[:^alnum:]])
     /x
     has_secure_password
-    validates :password, :length => { :minimum => 6 }
-    validates :password, format: { with: PASSWORD_FORMAT, :message => 'Password must include: 1 uppercase, 1 lowercase, 1 digit and 1 special character' }
+    validates :password, :length => { :minimum => 6 }, :if => :password
+    validates :password, format: { with: PASSWORD_FORMAT, :message => 'Password must include: 1 uppercase, 1 lowercase, 1 digit and 1 special character' }, :if => :password
 
 end
