@@ -1,4 +1,5 @@
 class LoadoutsController < ApplicationController
+    before_action :current_user, only: [:create, :update, :destroy]
     wrap_parameters Loadout, include: [:user_id, :champion_id, :name]
 
     def index
