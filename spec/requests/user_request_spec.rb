@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
     let(:valid_attributes) do
         {
+            "name": "K",
             "username": 'afegad',
-            "password": "123Ab!",
-            "age": 1,
-            "name": "K"
+            "password": "123Abc!",
+            "age": 1
         }
     end
     let(:invalid_attributes) do
