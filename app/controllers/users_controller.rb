@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-    wrap_parameters User, include: [:password, :username, :age, :name]
+    before_action :current_user, only: [:update, :destroy]
+    wrap_parameters :user, include: [:password, :username, :age, :name]
 
     def index
         users= User.all
