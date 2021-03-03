@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     before_action :current_user, only: [:update, :destroy]
-    wrap_parameters :user, include: [:password, :username, :age, :name]
-    wrap_parameters :current_user, format: :json, include: [:password, :username, :age, :name]
+    wrap_parameters :user, format: :json, include: [:password, :username, :age, :name]
 
     def index
         users= User.all
