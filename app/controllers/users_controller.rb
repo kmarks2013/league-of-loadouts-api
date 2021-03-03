@@ -25,16 +25,18 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.find(params[:id])
-        if user == current_user
-            if user.update(update_params)
-                render json: user, include: '**', status: :accepted
-            else
-                render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
-            end
-        else
-            render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
-        end
+        current_user.update(update_params)
+        render json:current_user, include: '**', status: :accepted
+        # user = User.find(params[:id])
+        # if user == current_user
+        #     if user.update(update_params)
+        #         render json: user, include: '**', status: :accepted
+        #     else
+        #         render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+        #     end
+        # else
+        #     render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
+        # end
     end
     
     def destroy
