@@ -41,18 +41,6 @@ class LoadoutsController < ApplicationController
         else
             render json: {error: "Unauthorized Access Restricted"}
         end
-
-        # if current_user
-        #     loadout = Loadout.find(params[:id])
-        #     if loadout[:user_id] == current_user.id
-        #         loadout.destroy
-        #         render json: Loadout.all, status: :accepted
-        #     else
-        #         render json: {error: "Unauthorized Access Restricted"}
-        #     end
-        # else
-        #     render json: {error: "You must be logged in to preform this action"}
-        # end
     end
 
     private
