@@ -100,6 +100,7 @@ RSpec.describe "Users", type: :request do
                     user = User.find(@current_user.id)
                     patch user_url(user), params: {user: new_attributes}, headers: valid_headers, as: :json
                     expect(response).to have_http_status :accepted
+                    expect(response.content_type).to match (a_string_including("application/json"))
                 end
             end
         end
