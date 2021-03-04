@@ -1,6 +1,6 @@
 class LoadoutItemsController < ApplicationController
     before_action :current_user, only: [:create, :destroy]
-    wrap_parameters :loadout_item, format: :json
+    wrap_parameters :loadout_item, format: :json, include: [:loadout_id, :items_array]
 
     def index
         loadout_items = LoadoutItem.all
