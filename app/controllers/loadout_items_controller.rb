@@ -17,7 +17,11 @@ class LoadoutItemsController < ApplicationController
         # future update nest this to be under the loadout
         # byebug
         loadout = current_user.loadouts.find(loadout_item_params[:loadout_id])
+        loadout_item_params[:items_array].each do | item |
+            loadout.loadout_items.create(item_id: item)
+        end
         render json: loadout
+
         # if current_user
         #     loadout = Loadout.find(loadout_item_params[:loadout_id])
         #     if loadout.user.id == current_user.id
