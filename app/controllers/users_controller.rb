@@ -15,9 +15,10 @@ class UsersController < ApplicationController
         # byebug
         user = User.create(user_params)
         if user.valid?
-            payload = {user_id: user.id}
-            token = JWT.encode(payload, hmac_secret, 'HS256')
-            render json: {user: user, token: token}
+            # payload = {user_id: user.id}
+            # token = JWT.encode(payload, hmac_secret, 'HS256')
+            # render json: {user: user, token: token}
+            render json: {user: user}, status: :created
         else
             render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
         end
