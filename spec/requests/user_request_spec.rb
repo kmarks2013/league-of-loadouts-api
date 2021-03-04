@@ -103,5 +103,14 @@ RSpec.describe "Users", type: :request do
                 end
             end
         end
+        context 'With unpermitted user' do
+            context 'it will check if the current useer is the user to be updated', if: !@condition do
+                it 'will not update the user' do
+                    user = User.create!(name: "Testor", username: "testuser", password:'Testpass1!', age: 23)
+                    patch user_url(user), params: {user: new_attributes}, headers: valid_headers, as: :json
+                    expect(response).to have_http_status :unauthorized
+                end
+            end
+        end
     end
 end
