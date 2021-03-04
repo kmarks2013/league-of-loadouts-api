@@ -47,8 +47,9 @@ class UsersController < ApplicationController
     
     def destroy
         user = User.find(current_user.id)
-        user.destroy!
-        render json: {}
+        if user.destroy!
+            render json: {}
+        end
     end
 
     private
