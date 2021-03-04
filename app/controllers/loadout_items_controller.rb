@@ -18,8 +18,6 @@ class LoadoutItemsController < ApplicationController
         loadout = current_user.loadouts.find(loadout_item_params[:loadout_id])
         if create_loadout_items(loadout, loadout_item_params[:items_array])
             render json: loadout
-        else
-            render json: {error: loadout_items.errors.full_messages}
         end
     end
 
@@ -40,7 +38,7 @@ class LoadoutItemsController < ApplicationController
 
     def create_loadout_items(loadout, items)
         items.each do | item |
-            loadout.loadout_items.create(item_id: item)
+            loadout.loadout_items.create!(item_id: item)
         end
     end
 
