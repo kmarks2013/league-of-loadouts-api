@@ -25,10 +25,8 @@ class LoadoutsController < ApplicationController
 
     def update
         loadout = current_user.loadouts.find(params[:id])
-        if loadout.update(loadout_update_params)
+        if loadout.update!(loadout_update_params)
             render json: loadout, status: :accepted
-        else
-            render json: {errors: loadout.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
