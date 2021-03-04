@@ -42,8 +42,6 @@ class UsersController < ApplicationController
         user = User.find(current_user.id)
         if user.update!(update_params)
             render json: user, include: '**', status: :accepted
-        # else
-        #     render json: {errors: user.errors.full_messages}
         end
     end
     
