@@ -31,18 +31,18 @@ class LoadoutItemsController < ApplicationController
     end
 
     def destroy
-        if current_user
-            loadout_item = LoadoutItem.find(params[:id])
-            loadout = Loadout.find(loadout_item.loadout_id)
-            if loadout.user.id == current_user.id
-                loadout_item.destroy
-                render json: loadout
-            else
-                render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
-            end
-        else
-            render json: {error: "You must be logged in to do this action"}, status: :unauthorized
-        end
+        # if current_user
+        #     loadout_item = LoadoutItem.find(params[:id])
+        #     loadout = Loadout.find(loadout_item.loadout_id)
+        #     if loadout.user.id == current_user.id
+        #         loadout_item.destroy
+        #         render json: loadout
+        #     else
+        #         render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
+        #     end
+        # else
+        #     render json: {error: "You must be logged in to do this action"}, status: :unauthorized
+        # end
     end
 
 
