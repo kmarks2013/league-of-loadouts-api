@@ -14,7 +14,7 @@ class LoadoutItemsController < ApplicationController
     end
 
     def create
-        # future update nest this to be under the loadout
+        # future update nest this to be under the loadout?
         loadout = current_user.loadouts.find(loadout_item_params[:loadout_id])
         if create_loadout_items(loadout, loadout_item_params[:items_array])
             render json: loadout
