@@ -40,7 +40,6 @@ class LoadoutItemsController < ApplicationController
     end
 
     def destroy
-        # email for advice on this solution -> not sure how to proceed with out being redundant yet.
         loadout_item = current_user.loadout_items.find(params[:id])
         loadout = current_user.loadouts.find(loadout_item.loadout_id)
         render json: loadout_item
