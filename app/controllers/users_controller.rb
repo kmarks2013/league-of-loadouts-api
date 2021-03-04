@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 
         render json: user, include: '**', status: :accepted
 
-        # user = User.find(current_user.id)
         # begin
         #     user.update(update_params)
         #     render json: user, include: '**', status: :accepted
@@ -42,12 +41,12 @@ class UsersController < ApplicationController
         #     render json: {errors: exception.message}, status: :unprocessable_entity
         # end
 
-        user = User.find(current_user.id)
-        if user.update(update_params)
-            render json: user, include: '**', status: :accepted
-        else
-            render json: {errors: user.errors.full_messages}
-        end
+        # user = User.find(current_user.id)
+        # if user.update(update_params)
+        #     render json: user, include: '**', status: :accepted
+        # else
+        #     render json: {errors: user.errors.full_messages}
+        # end
     end
     
     def destroy
