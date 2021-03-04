@@ -47,12 +47,11 @@ RSpec.describe "Users", type: :request do
             end
 
             it 'renders the JSON response with a new User' do
-                user = User.create!(valid_attributes)
-                post users_url, params: {user: valid_attributes}, headers: valid_headers, as: :json
-                expect(response).to be_successful
-                # expect(response.content_type).to match (a_string_including("application/json"))
+                # user = User.create!(valid_attributes)
+                post users_url, params: {user: valid_attributes}, headers: {"ACCEPT" => "application/json"}, as: :json
+                expect(response).to have_http_status(:created)
+                expect(response.content_type).to match (a_string_including("application/json"))
             end
         end
     end
-
 end
