@@ -47,11 +47,25 @@ RSpec.describe "Users", type: :request do
             end
 
             it 'renders the JSON response with a new User' do
-                # user = User.create!(valid_attributes)
                 post users_url, params: {user: valid_attributes}, headers: {"ACCEPT" => "application/json"}, as: :json
                 expect(response).to have_http_status(:created)
                 expect(response.content_type).to match (a_string_including("application/json"))
             end
         end
+
+        context 'with invalid paramaters' do
+            it 'does not create a new User' do
+                expect {
+                    post users_url, params: {user: invalid_attributes}
+                }.to change(User, :count).by(0)
+            end
+
+            it 'does not render a JSON response with a new User' do
+                post users_url, params: {user: invalid_attributes}, headers: {"ACCEPT" => "application/json" , "CONTENT-TYPE" => "application/json"}, as: :json
+                expect(response).to have_http_status :unprocessable_entity
+                expect(response.content_type).to match (a_string_including("application/json"))
+            end
+        end
     end
+
 end
