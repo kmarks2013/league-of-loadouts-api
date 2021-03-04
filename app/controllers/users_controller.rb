@@ -25,7 +25,14 @@ class UsersController < ApplicationController
 
     def update
         # Finding the user using the current user's id because when my update fails on the current user the errors comes back as an empty object
-        # Next step will be to implement a begin rescue call -> currently it isn't hitting any errors.
+        # Next step will be to implement a begin rescue call currently it isn't hitting any errors.
+
+        user = User.find(current_user.id)
+        unless !!user.update(update_params)
+            render json: {errors: exception.message}, status: :unprocessable_entity
+        end
+
+        render json: user, include: '**', status: :accepted
 
         # user = User.find(current_user.id)
         # begin
