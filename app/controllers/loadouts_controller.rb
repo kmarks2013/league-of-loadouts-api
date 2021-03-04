@@ -33,6 +33,9 @@ class LoadoutsController < ApplicationController
     end
 
     def update
+        loadout = current_user.loadouts.find(params[:id])
+        render json: loadout
+
         # if current_user
         #     loadout = Loadout.find(params[:id])
         #     if loadout[:user_id] == current_user.id
@@ -51,6 +54,9 @@ class LoadoutsController < ApplicationController
     end
 
     def destroy 
+        loadout = current_user.loadouts.find(params[:id])
+        render json: loadout
+
         # if current_user
         #     loadout = Loadout.find(params[:id])
         #     if loadout[:user_id] == current_user.id
