@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordNotDestroyed, with: :not_destroyed
 
-
-    def not_destroyed
-        render json: {error: "Unable to process Request"}, status: :unprocessable_entity
+    def not_destroyed(e)
+        render json: {errors: e.record.errors} , status: :unprocessable_entity
     end
 
     def user_payload(user)
