@@ -110,6 +110,15 @@ RSpec.describe "Users", type: :request do
                     expect(response.content_type).to match (a_string_including("application/json"))
                 end
             end
+            context "with invalid new_attributes", if: @condition do
+                it 'will not update the user' do
+                    user = User.find(@current_user.id)
+                    patch user_url(user), params:{ user: invalid_new_attributes}, headers: valid_headers, as: :json
+                    expect(response).to have_http_status :unprocessable_entity
+                    expect(response.content_type).to match (a_string_including("application/json"))
+                end
+            end
+
         end
         context 'With unpermitted user' do
             context 'it will check if the current useer is the user to be updated', if: !@condition do
