@@ -73,7 +73,7 @@ class LoadoutsController < ApplicationController
     private
 
     def loadout_params
-        params.require(:loadout).permit(:champion_id, :name)
+        params.require(:loadout).permit([:champion_id, :name])
     end
 
     def loadout_update_params
