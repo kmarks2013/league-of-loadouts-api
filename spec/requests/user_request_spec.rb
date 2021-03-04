@@ -89,6 +89,13 @@ RSpec.describe "Users", type: :request do
                 "username" => "newTestUsername"
             }
         end
+        let(:invalid_new_attributes) do
+            {
+                "name" => "New name",
+                "age" => '27',
+                "username" => ""
+            }
+        end
         context ' With permitted user' do
             context "with valid new_attributes", if: @condition do
                 it 'will then update the requested user' do
