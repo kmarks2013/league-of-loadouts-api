@@ -61,7 +61,7 @@ class LoadoutItemsController < ApplicationController
         params.require(:loadout_item).permit([:loadout_id, items_array: []])
     end
 
-    def create_loadout_items loadout, items
+    def create_loadout_items(loadout, items)
         items.each do | item |
             loadout.loadout_items.create(item_id: item)
         end
