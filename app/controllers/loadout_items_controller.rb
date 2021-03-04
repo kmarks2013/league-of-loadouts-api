@@ -17,10 +17,11 @@ class LoadoutItemsController < ApplicationController
         # future update nest this to be under the loadout
         # byebug
         loadout = current_user.loadouts.find(loadout_item_params[:loadout_id])
-        loadout_item_params[:items_array].each do | item |
-            loadout.loadout_items.create(item_id: item)
+        if create_loadout_items(loadout, loadout_item_params[:items_array])
+            render json: loadout
+        else
+            render json: {error: loadout_items.errors.full_messages}
         end
-        render json: loadout
 
         # if current_user
         #     loadout = Loadout.find(loadout_item_params[:loadout_id])
