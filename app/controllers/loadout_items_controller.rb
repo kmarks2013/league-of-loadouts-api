@@ -15,28 +15,12 @@ class LoadoutItemsController < ApplicationController
 
     def create
         # future update nest this to be under the loadout
-        # byebug
         loadout = current_user.loadouts.find(loadout_item_params[:loadout_id])
         if create_loadout_items(loadout, loadout_item_params[:items_array])
             render json: loadout
         else
             render json: {error: loadout_items.errors.full_messages}
         end
-
-        # if current_user
-        #     loadout = Loadout.find(loadout_item_params[:loadout_id])
-        #     if loadout.user.id == current_user.id
-        #         loadout_item_params[:items_array].each do | item_id |
-        #             item = Item.find(item_id.to_i)
-        #             loadout_item = LoadoutItem.create(loadout_id: loadout_item_params[:loadout_id], item_id: item.id)
-        #         end
-        #             render json: loadout
-        #     else
-        #         render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
-        #     end
-        # else
-        #     render json: {error: "You must be logged in to do this action"}, status: :unauthorized
-        # end
     end
 
     def destroy
@@ -44,18 +28,6 @@ class LoadoutItemsController < ApplicationController
         loadout = current_user.loadouts.find(loadout_item.loadout_id)
         loadout_item.destroy!
         render json: loadout
-        # if current_user
-        #     loadout_item = LoadoutItem.find(params[:id])
-        #     loadout = Loadout.find(loadout_item.loadout_id)
-        #     if loadout.user.id == current_user.id
-        #         loadout_item.destroy
-        #         render json: loadout
-        #     else
-        #         render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
-        #     end
-        # else
-        #     render json: {error: "You must be logged in to do this action"}, status: :unauthorized
-        # end
     end
 
 
