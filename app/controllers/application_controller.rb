@@ -33,7 +33,7 @@ class ApplicationController < ActionController::API
         render json: {errors: e.record.errors} , status: :unprocessable_entity
     end
 
-    def not_valid
+    def not_valid(e)
         render json: {errors: e.record.errors}, status: :unprocessable_entity
     end
 end
