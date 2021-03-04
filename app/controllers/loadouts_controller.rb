@@ -17,11 +17,9 @@ class LoadoutsController < ApplicationController
     end
 
     def create
-        loadout = current_user.loadouts.create(loadout_params)
+        loadout = current_user.loadouts.create!(loadout_params)
         if loadout.valid?
             render json: loadout, status: :created
-        else
-            render json: {errors: loadout.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
