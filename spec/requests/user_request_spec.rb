@@ -66,6 +66,15 @@ RSpec.describe "Users", type: :request do
                 expect(response.content_type).to match (a_string_including("application/json"))
             end
         end
+
+        context 'with duplicate usernames' do
+            it "it won't save the duplicate User" do
+                User.create!(valid_attributes)
+                post users_url, params: {user: invalid_attributes}, headers: {"ACCEPT" => "application/json" , "CONTENT-TYPE" => "application/json"}, as: :json
+                expect(response).to have_http_status :unprocessable_entity
+                expect(response.content_type).to match (a_string_including("application/json"))
+            end
+        end
     end
 
 end
