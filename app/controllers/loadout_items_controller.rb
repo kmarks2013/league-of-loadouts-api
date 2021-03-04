@@ -26,8 +26,9 @@ class LoadoutItemsController < ApplicationController
     def destroy
         loadout_item = current_user.loadout_items.find(params[:id])
         loadout = current_user.loadouts.find(loadout_item.loadout_id)
-        loadout_item.destroy!
-        render json: loadout
+        if loadout_item.destroy!
+            render json: loadout
+        end
     end
 
 
