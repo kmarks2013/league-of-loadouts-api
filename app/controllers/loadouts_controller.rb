@@ -23,16 +23,6 @@ class LoadoutsController < ApplicationController
         else
             render json: {errors: loadout.errors.full_messages}, status: :unprocessable_entity
         end
-        # if current_user
-        #     loadout = current_user.loadouts.new(loadout_params)
-        #     if loadout && loadout.save
-        #         render json: loadout, status: :created
-        #     else
-        #         render json: {errors: loadout.errors.full_messages}, status: :unprocessable_entity
-        #     end
-        # else
-        #     render json: {error: "You must be logged in to create a loadout"}, status: :unauthorized
-        # end
     end
 
     def update
