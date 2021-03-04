@@ -14,6 +14,8 @@ class LoadoutItemsController < ApplicationController
     end
 
     def create
+        # future update nest this to be under the loadout
+        byebug
         # if current_user
         #     loadout = Loadout.find(loadout_item_params[:loadout_id])
         #     if loadout.user.id == current_user.id
