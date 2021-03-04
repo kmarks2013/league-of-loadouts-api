@@ -24,9 +24,12 @@ class LoadoutsController < ApplicationController
     end
 
     def update
-        loadout = current_user.loadouts.find(params[:id])
-        if loadout.update!(loadout_update_params)
+        begin
+            loadout = current_user.loadouts.find(params[:id])
+            loadout.update!(loadout_update_params)
             render json: loadout, status: :accepted
+        rescue ActiveRecord::RecordNotFound
+            render json: {error: "Unauthroized Access Restricted"}, status: :unauthorized
         end
     end
 
