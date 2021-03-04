@@ -31,6 +31,10 @@ class LoadoutsController < ApplicationController
         rescue ActiveRecord::RecordNotFound
             render json: {error: "Unauthroized Access Restricted"}, status: :unauthorized
         end
+        # loadout = current_user.loadouts.find(params[:id])
+        # if loadout.update!(loadout_update_params)
+        #     render json: loadout, status: :accepted
+        # end
     end
 
     def destroy 
