@@ -27,28 +27,11 @@ class LoadoutsController < ApplicationController
 
     def update
         loadout = current_user.loadouts.find(params[:id])
-
         if loadout.update(loadout_update_params)
             render json: loadout, status: :accepted
         else
             render json: {errors: loadout.errors.full_messages}, status: :unprocessable_entity
         end
-
-        # if current_user
-        #     loadout = Loadout.find(params[:id])
-        #     if loadout[:user_id] == current_user.id
-        #         byebug
-        #         if loadout.update(loadout_update_params)
-        #             render json: loadout, status: :accepted
-        #         else
-        #             render json: {error: loadout.errors.full_messages}, status: :unprocessable_entity
-        #         end
-        #     else
-        #         render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
-        #     end
-        # else
-        #     render json: {error: "You must be logged in to preform this action."}, status: :unauthorized
-        # end
     end
 
     def destroy 
