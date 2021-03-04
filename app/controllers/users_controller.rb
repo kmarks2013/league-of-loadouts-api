@@ -50,13 +50,17 @@ class UsersController < ApplicationController
     end
     
     def destroy
-        user = User.find(params[:id])
-        if user == current_user
-            user.destroy
-            render json: { }
-        else
-            render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
-        end
+        user = User.find(current_user.id)
+        user.destroy!
+        render json: {}
+
+        # user = User.find(params[:id])
+        # if user == current_user
+        #     user.destroy
+        #     render json: { }
+        # else
+        #     render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
+        # end
     end
 
     private
