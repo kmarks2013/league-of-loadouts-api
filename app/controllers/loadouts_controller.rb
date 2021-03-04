@@ -36,7 +36,11 @@ class LoadoutsController < ApplicationController
 
     def destroy 
         loadout = current_user.loadouts.find(params[:id])
-        render json: loadout
+        if loadout.destroy
+            render json: Loadout.all.ordered_by_creation, status: :accepted
+        else
+            render json: {error: "Unauthorized Access Restricted"}
+        end
 
         # if current_user
         #     loadout = Loadout.find(params[:id])
