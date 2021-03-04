@@ -28,9 +28,7 @@ class UsersController < ApplicationController
     def update
         # Goal is to make sure a user can not be updated unless they have the correct token
         # byebug
-        if persist 
-            byebug
-        end
+        # pass the user id from params on an update because i don't want someone to be albe to change that
 
         # user = User.find(params[:id])
         # if user.update(user_params)
