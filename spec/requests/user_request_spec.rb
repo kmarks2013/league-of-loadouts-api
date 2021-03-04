@@ -78,23 +78,19 @@ RSpec.describe "Users", type: :request do
     end
 
     describe "PATCH /update " do
-        context 'with valid parameters' do
-            before(:each) do
-                @current_user = User.create!(valid_attributes)
-                @condition = User.find(@current_user.id).id == @current_user.id
-            end
-            let(:new_attributes) do
-                {
-                    "name" => "New name",
-                    "age" => '27',
-                    "username" => "newTestUsername"
-                }
-            end
-            context" it will check that the current user is the user to be updated", if: @condition do
-                it "will check that the Curent User is the user to be updated" do
-                    user = User.find(@current_user.id)
-                    expect(user).to eq(@current_user)
-                end
+        before(:each) do
+            @current_user = User.create!(valid_attributes)
+            @condition = User.find(@current_user.id).id == @current_user.id
+        end
+        let(:new_attributes) do
+            {
+                "name" => "New name",
+                "age" => '27',
+                "username" => "newTestUsername"
+            }
+        end
+        context ' With permitted user' do
+            context "it will check that the current user is the user to be updated", if: @condition do
                 it 'will then update the requested user' do
                     user = User.find(@current_user.id)
                     patch user_url(user), params: {user: new_attributes}, headers: valid_headers, as: :json
