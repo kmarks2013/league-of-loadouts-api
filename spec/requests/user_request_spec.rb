@@ -18,7 +18,7 @@ RSpec.describe "Users", type: :request do
 
     let(:valid_headers) do
         {
-            "CONTENT-TYPE": 'application/json'
+            "Accept": 'application/json'
         }
     end
 
