@@ -77,4 +77,35 @@ RSpec.describe "Users", type: :request do
         end
     end
 
+    describe "PATCH /update " do
+        context 'with valid parameters' do
+            before(:each) do
+                @current_user = User.create!(valid_attributes)
+                @condition = User.find(@current_user.id).id == @current_user.id
+            end
+            let(:new_attributes) do
+                {
+                    "name" => "New name",
+                    "age" => '27',
+                    "username" => "newTestUsername"
+                }
+            end
+            context" it will check that the current user is the user to be updated", if: @condition do
+                it "will check that the Curent User is the user to be updated" do
+                    user = User.find(@current_user.id)
+                    expect(user).to eq(@current_user)
+                end
+                it 'will then update the requested user' do
+                    user = User.find(@current_user.id)
+                    patch user_url(user), params: {user: new_attributes}, headers: valid_headers, as: :json
+                    user.reload
+                end
+                it 'renders the JSON response with the updated user' do
+                    user = User.find(@current_user.id)
+                    patch user_url(user), params: {user: new_attributes}, headers: valid_headers, as: :json
+                    expect(response).to have_http_status :accepted
+                end
+            end
+        end
+    end
 end
