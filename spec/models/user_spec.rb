@@ -11,4 +11,11 @@ RSpec.describe User, type: :model do
         end
     end
 
+    describe 'User', 'validations' do
+        it {should validate_presence_of(:username)}
+        it {should validate_length_of(:username).is_at_least(6).is_at_most(30)}
+        it {should validate_length_of(:password).is_at_least(6)}
+        it {should have_secure_password}
+    end
+
 end
