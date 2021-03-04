@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
     before(:each) do
-        @user = User.create!(name: "Testor", username: "testuser", password:'Testpass1!', age: 23)
+        user = User.create!(name: "Testor", username: "testuser", password:'Testpass1!', age: 23)
     end
 
     describe 'creation' do
