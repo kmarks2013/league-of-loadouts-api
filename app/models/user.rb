@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_many :loadouts, dependent: :destroy
     has_many :champions, through: :loadouts
     has_many :items, through: :loadouts
+    has_many :loadout_items, through: :loadouts
 
     validates :username, presence: true
     validates :username, uniqueness: {message: "This username has already been taken"}, case_insensitive: false
