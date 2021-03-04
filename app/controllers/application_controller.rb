@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordNotDestroyed, with: :not_destroyed
+    rescue_from ActiveRecord::RecordInvalid, with: :not_valid
 
     def user_payload(user)
         { user_id: user.id}
@@ -30,5 +31,9 @@ class ApplicationController < ActionController::API
 
     def not_destroyed(e)
         render json: {errors: e.record.errors} , status: :unprocessable_entity
+    end
+
+    def not_valid
+        render json: {errors: e.record.errors}, status: :unprocessable_entity
     end
 end
