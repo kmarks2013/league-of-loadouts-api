@@ -50,7 +50,7 @@ class LoadoutsController < ApplicationController
             if loadout[:user_id] == current_user.id
                 byebug
                 if loadout.update(loadout_update_params)
-                    render json: loadout
+                    render json: loadout, status: :accepted
                 else
                     render json: {error: loadout.errors.full_messages}, status: :unprocessable_entity
                 end
