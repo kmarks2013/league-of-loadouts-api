@@ -83,6 +83,24 @@ RSpec.describe "Loadouts", type: :request do
     # conditional testing is causing these tests not to run. not sure why
   end
 
+  describe "PATCH /update" do
+    before(:each) do
+      @loadout = @current_user.loadouts.create!(name:'test', champion:@champion)
+    end
+    let(:new_attributes) do
+      {
+        "name" => "new test name"
+      }
+    end
+    context "with valid attributes" do
+      it "will then update the name of the loadout" do
+        loadout = Loadout.find(@loadout.id)
+        patch loadout_url(loadout), params: {user: new_attributes}, headers: valid_headers, as: :json
+        loadout.reload
+      end
+    end
+  end
+
   describe "DELETE /destroy" do
     context "when there is a current user" do
       context "will see if the current_user owns the loadout" do
