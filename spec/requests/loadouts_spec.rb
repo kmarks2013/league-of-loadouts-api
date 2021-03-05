@@ -14,6 +14,11 @@ require 'rails_helper'
 
 RSpec.describe "/loadouts", type: :request do
 
+  before(:each) do
+    @current_user = User.first_or_create!(username:'testname', password:"Test1234!", name: 'test', age: 23)
+    @champion = Champion.first_or_create!(name: "Champion")
+  end
+
   let(:valid_attributes) do
     {
       # attributes should be user_id, champion_id, name,
