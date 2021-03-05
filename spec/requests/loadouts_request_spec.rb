@@ -83,4 +83,26 @@ RSpec.describe "Loadouts", type: :request do
     # conditional testing is causing these tests not to run. not sure why
   end
 
+  describe "DELETE /destroy" do
+    context "when there is a current user" do
+      context "will see if the current_user owns the loadout" do
+        it 'will delete the loadout' do
+          loadout = @current_user.loadouts.create!(name: 'test', champion: @champion)
+          delete loadout_url(loadout), headers:valid_attributes, as: :json
+          expect(response).to have_http_status :accepted
+        end
+      end
+    end
+
+    context "when there isn't a current user " do
+      it 'will not delete the loadout' do
+        user = User.create!(name: "Testor", username: "testuser", password:'Testpass1!', age: 23)
+        champion = Champion.create!(name: "Test")
+        loadout = Loadout.create!(name:"test", champion:champion, user:user )
+        delete loadout_url(loadout), headers: valid_headers, as: :json
+        expect(response).to have_http_status :unauthorized
+      end
+    end
+  end
+
 end
