@@ -1,4 +1,5 @@
 class LoadoutsController < ApplicationController
+    wrap_parameters Loadout, include: [:user_id, :champion_id, :name]
 
     def index
         loadouts = Loadout.all
