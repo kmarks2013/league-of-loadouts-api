@@ -98,6 +98,11 @@ RSpec.describe "Loadouts", type: :request do
         patch loadout_url(loadout), params: {user: new_attributes}, headers: valid_headers, as: :json
         loadout.reload
       end
+      it "renders the json of the updated loadout" do
+        loadout = Loadout.find(@loadout.id)
+        patch loadout_url(loadout), params: {user: new_attributes}, headers: valid_headers, as: :json
+        expect(response). to have_http_status :accepted
+      end
     end
   end
 
