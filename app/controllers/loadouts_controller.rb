@@ -46,7 +46,12 @@ class LoadoutsController < ApplicationController
         # }
 
         if current_user
-            byebug
+            loadout = Loadout.find(params[:id])
+            if loadout[:user_id] == current_user.id
+                byebug
+            else
+                render json: {error: "Unauthorized Access Restricted"}
+            end
         else
             render json: {error: "You must be logged in to preform this action."}
         end
