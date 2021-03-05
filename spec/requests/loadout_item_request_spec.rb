@@ -28,5 +28,10 @@ RSpec.describe "LoadoutItems", type: :request do
         }
     end
 
+    describe "GET /index" do
+        it "renders the json of all the loadout items" do
+            expect(response).to be_successful
+        end
+    end
 
 end
