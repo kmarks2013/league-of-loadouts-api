@@ -71,11 +71,12 @@ RSpec.describe "Loadouts", type: :request do
         expect{
           post loadouts_url, params: {loadout: invalid_attributes}, headers: valid_headers, as: :json
         }.to change(Loadout, :count).by(0)
-      end  
+      end
 
       it 'renders json of the errors' do
         post loadouts_url, params: {loadout: invalid_attributes}, headers: valid_headers, as: :json
         expect(response).to have_http_status :unprocessable_entity
+        # currently this test is failing because the conditionall wil not run
       end
     end
 
