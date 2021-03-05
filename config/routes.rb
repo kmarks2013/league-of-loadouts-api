@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   resources :stats
   resources :champion_roles
   resources :roles
-  resources :loadout_items,  only: [:index, :show, :create]
+  resources :loadout_items,  only: [:index, :show, :create,:destroy]
   resources :items
   resources :loadouts
   resources :champions
   resources :users
 
-  delete '/loadout_items', to: 'loadout_items#destroy'
+  # delete '/loadout_items/', to: 'loadout_items#destroy'
 
   get '/persist', to: 'auth#persist'
   post '/login', to: 'auth#login'
