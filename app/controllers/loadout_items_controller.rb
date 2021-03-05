@@ -19,7 +19,7 @@ class LoadoutItemsController < ApplicationController
         # byebug
         if current_user
             loadout = Loadout.find(loadout_item_params[:loadout_id])
-            if loadout.user.id === current_user.id
+            if loadout.user.id == current_user.id
                 loadout_item_params[:items_array].each do | item_id |
                     item = Item.find(item_id.to_i)
                     loadout_item = LoadoutItem.create(loadout_id: loadout_item_params[:loadout_id], item_id: item.id)
