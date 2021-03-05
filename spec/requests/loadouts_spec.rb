@@ -46,7 +46,8 @@ RSpec.describe "/loadouts", type: :request do
 
   describe "GET /show/:id " do
     it "renders the json of the specfiic loadout" do
-      get loadout_url()
+      loadout = Loadout.create(name:'test', champion: @champion, user: @current_user)
+      get loadout_url(loadout), as: :json
       expect(response).to be_successful
     end
   end
