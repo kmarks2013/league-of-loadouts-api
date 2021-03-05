@@ -87,11 +87,19 @@ RSpec.describe "Loadouts", type: :request do
     before(:each) do
       @loadout = @current_user.loadouts.create!(name:'test', champion:@champion)
     end
+
     let(:new_attributes) do
       {
         "name" => "new test name"
       }
     end
+
+    let(:invalid_new_attributes) do
+      {
+        "name" => ''
+      }
+    end
+
     context "with valid attributes" do
       it "will then update the name of the loadout" do
         loadout = Loadout.find(@loadout.id)
