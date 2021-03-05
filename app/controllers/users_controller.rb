@@ -30,10 +30,19 @@ class UsersController < ApplicationController
         # byebug
         # pass the user id from params on an update because i don't want someone to be albe to change that
 
-        # user = User.find(params[:id])
-        # if user.update(user_params)
-        #     render json: user, include: '**'
-        # end
+        user = User.find(params[:id])
+        # byebug
+        if user == current_user
+            # user.update(update_params)
+            # byebug
+            if user.update(update_params)
+                render json: user, include: '**', status: :accepted
+            else
+                render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+            end
+        else
+            render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
+        end
     end
     
     def destroy
