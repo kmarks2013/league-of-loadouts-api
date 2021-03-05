@@ -48,8 +48,15 @@ class UsersController < ApplicationController
     def destroy
         # Goal is to make sure a user can not be deleted unless they have the correct token
         user = User.find(params[:id])
-        user.destroy
-        render json: { }
+        # byebug
+        if user == current_user
+            # byebug
+            user.destroy
+            render json: { }
+            # render json: { message: 'this account should be deleted' }
+        else
+            render json: {error: "Unauthorized Access Restricted"}
+        end
     end
 
     private
