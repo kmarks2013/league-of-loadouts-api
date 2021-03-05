@@ -130,4 +130,18 @@ RSpec.describe "Users", type: :request do
             end
         end
     end
+
+    describe "DELETE /destroy" do
+        before(:each) do
+            @current_user = User.create!(valid_attributes)
+            @condition = User.find(@current_user.id).id == @current_user.id
+        end
+        context 'will check if the user is the current user', if: @condition do
+            it "then delete the user" do
+                user = User.find(@current_user.id)
+                delete user_url(user), headers: valid_headers, as: :json
+                expect(response).to have_http_status :accepted
+            end
+        end
+    end
 end
