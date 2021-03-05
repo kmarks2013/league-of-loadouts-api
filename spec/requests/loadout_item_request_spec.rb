@@ -15,7 +15,8 @@ RSpec.describe "LoadoutItems", type: :request do
     end
     let(:valid_attributes) do
         {
-
+            loadout_id: @loadout.id,
+            items_array: [@item1.id, @item2.id, @item3.id, @item4.id]
         }
     end
     let(:invalid_attributes) do
