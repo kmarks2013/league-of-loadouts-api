@@ -19,9 +19,12 @@ class LoadoutsController < ApplicationController
         # Goal is to make sure a loadout can not be created unless they have the correct token
         # A loadout should only be made if there is a current user.
         # A loadout should be assigned the user id of the current user it shouldn't be passed back online.
-        loadout = Loadout.create(loadout_params)
-        if loadout.valid?
-            render json: loadout
+        loadout = Loadout.new(loadout_params)
+        # byebug
+        if loadout && loadout.save
+            render json: loadout, status: :created
+        else
+            render json: {errors: loadout.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
