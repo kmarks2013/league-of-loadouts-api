@@ -110,6 +110,7 @@ RSpec.describe "Loadouts", type: :request do
           expect(response).to have_http_status :accepted
         end
       end
+    # currently this test is not working properly because the conditionall wil not run
     end
 
     context "when there isn't a current user " do
@@ -121,6 +122,7 @@ RSpec.describe "Loadouts", type: :request do
         expect(response).to have_http_status :unauthorized
       end
     end
+    # currently this test is not working properly because the conditionall wil not run
   end
 
 end
