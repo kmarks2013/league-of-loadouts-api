@@ -95,7 +95,7 @@ RSpec.describe "LoadoutItems", type: :request do
 
                     context 'it does not belong to the current user' do
                         it "returns with an unauthorized status" do
-                            post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
+                            post loadout_item_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
                             expect(response).to have_http_status :unauthorized
                         end
                     end
@@ -105,7 +105,7 @@ RSpec.describe "LoadoutItems", type: :request do
 
             context 'when there isnt a curent user' do
                 it 'it will return a status of unautorhorized if not' do
-                    post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :Json
+                    post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
                     expect(!@condition).to eq false
                     expect(response).to have_http_status :unauthorized
                 end
