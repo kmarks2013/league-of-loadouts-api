@@ -45,4 +45,11 @@ RSpec.describe "/loadouts", type: :request do
     end
   end
 
+  describe "GET /show/:id " do
+    it "renders the json of the specfiic loadout" do
+      get loadout_url()
+      expect(response).to be_successful
+    end
+  end
+
 end
