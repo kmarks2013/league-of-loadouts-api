@@ -54,14 +54,14 @@ RSpec.describe "/loadouts", type: :request do
   end
 
   describe "POST /create" do
-    context "if it is the current user", if: @condition do
+    # context "if it is the current user", if: @condition do
       it "will add a loadout to the current user" do
         loadout = @current_user.loadouts.create!(valid_attributes)
         expect{
           post loadouts_url, params: {loadout: loadout}, headers: valid_headers, as: :json
         }.to change(Loadout, :count).by(0)
       end
-    end
+    # end
   end
 
 end
