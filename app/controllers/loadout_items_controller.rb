@@ -21,7 +21,8 @@ class LoadoutItemsController < ApplicationController
         #     loadout_item = LoadoutItem.create(loadout_id: loadout_item_params[:loadout_id], item_id: item.id)
             
         # end
-        # loadout = Loadout.find(loadout_item_params[:loadout_id])
+        # byebug
+        loadout = Loadout.find(loadout_item_params[:loadout_id])
         # render json: loadout
 
         if current_user
