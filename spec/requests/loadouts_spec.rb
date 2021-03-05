@@ -52,4 +52,12 @@ RSpec.describe "/loadouts", type: :request do
     end
   end
 
+  describe "POST /create" do
+    context "if it is the current user", if: condition do
+      it "will add a loadout to that user" do
+        
+      end
+    end
+  end
+
 end
