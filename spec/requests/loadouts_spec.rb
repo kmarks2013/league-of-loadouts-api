@@ -35,4 +35,14 @@ RSpec.describe "/loadouts", type: :request do
     {"ACCEPT"=> "application/json"}
   }
 
+  describe "GET /index" do
+    it "renders the json of the all the loadouts" do
+      @current_user.loadouts.create!(name:'test', champion: @champion)
+      # will update controller to match this new way of adding a load out only on to the current user.
+      get loadouts_url
+      expect(response).to be_successful
+      expect(response.content_type).to match(a_string_including("application/json"))
+    end
+  end
+
 end
