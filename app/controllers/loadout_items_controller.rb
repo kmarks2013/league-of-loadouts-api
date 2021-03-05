@@ -46,10 +46,6 @@ class LoadoutItemsController < ApplicationController
         else
             render json: {error: "You must be logged in to do this action"}, status: :unauthorized
         end
-        # loadout_item = LoadoutItem.find_by(item_id: params[:item_id], loadout_id: params[:loadout_id] )
-        # loadout_item.destroy
-        # loadout = Loadout.find(params[:loadout_id])
-        # render json: loadout
     end
 
 
