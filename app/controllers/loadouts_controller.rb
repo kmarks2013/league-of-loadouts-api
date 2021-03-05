@@ -49,6 +49,11 @@ class LoadoutsController < ApplicationController
             loadout = Loadout.find(params[:id])
             if loadout[:user_id] == current_user.id
                 byebug
+                if loadout.update(loadout_update_params)
+                    render json: loadout
+                else
+                    render json: {error: loadout.errors.full_messages}
+                end
             else
                 render json: {error: "Unauthorized Access Restricted"}
             end
