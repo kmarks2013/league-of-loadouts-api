@@ -44,6 +44,12 @@ class LoadoutsController < ApplicationController
         #  champion_id: params[:champion_id],
         #  name: loadout_update_params
         # }
+
+        if current_user
+            byebug
+        else
+            render json: {error: "You must be logged in to preform this action."}
+        end
         # if loadout.update(loadout_params)
         #     render json: loadout
         # end
