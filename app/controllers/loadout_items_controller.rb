@@ -1,5 +1,5 @@
 class LoadoutItemsController < ApplicationController
-
+    wrap_parameters LoadoutItem
     def index
         loadout_items = LoadoutItem.all
         render json: loadout_items
