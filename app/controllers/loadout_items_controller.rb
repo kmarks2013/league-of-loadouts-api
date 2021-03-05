@@ -40,10 +40,15 @@ class LoadoutItemsController < ApplicationController
 
     def destroy
         # Goal is to make sure a loadout item can not be deleted unless there is a valid auth token and the loadout belongs to that user.
-        loadout_item = LoadoutItem.find_by(item_id: params[:item_id], loadout_id: params[:loadout_id] )
-        loadout_item.destroy
-        loadout = Loadout.find(params[:loadout_id])
-        render json: loadout
+        if current_user
+            byebug
+        else
+            render json: {error: "You must be logged in to do this action"}, status: :unauthorized
+        end
+        # loadout_item = LoadoutItem.find_by(item_id: params[:item_id], loadout_id: params[:loadout_id] )
+        # loadout_item.destroy
+        # loadout = Loadout.find(params[:loadout_id])
+        # render json: loadout
     end
 
 
