@@ -118,6 +118,13 @@ RSpec.describe "LoadoutItems", type: :request do
                 it "moves on if there is a current user " do
                     expect(@condition).to eq true
                 end
+                context "it will check the ownership of the loadout" do
+                    context 'when the users are the same' do
+                        it 'belongs to the current user' do
+                            expect(@current_user.loadouts.first).to eq(@loadout)
+                        end
+                    end
+                end
             end
 
             context 'when there isnt a curent user' do
