@@ -61,9 +61,19 @@ RSpec.describe "LoadoutItems", type: :request do
                 expect(@condition).to eq true
             end
 
-            it 'it will check that the loadout being udpated belongs to that user' do
-                expect(@current_user.loadouts.first).to eq(@loadout)
+            context "it will check the ownership of hte loadout" do
+                it 'belongs to the current user' do
+                    expect(@current_user.loadouts.first).to eq(@loadout)
+                end
+
+                context 'it does not belong to the current user' do
+                    it "returns with an unauthorized status" do
+                        post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
+                        expect(response).to have_http_status :unauthorized
+                    end
+                end
             end
+
         end
 
         context 'when there isnt a curent user' do
