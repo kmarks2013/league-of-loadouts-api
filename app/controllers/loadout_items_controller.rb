@@ -16,14 +16,19 @@ class LoadoutItemsController < ApplicationController
         # Goal is to make sure a loadout item  can not be added unless there is a valid auth token and the loadout belongs to that user.
         # Loadout Item should only be added to a corresponding loadout and when the loadout belongs to the current user.
         # Loadout id should be added
-        loadout_item_params[:items_array].each do | item_id |
-            item = Item.find(item_id.to_i)
-            loadout_item = LoadoutItem.create(loadout_id: loadout_item_params[:loadout_id], item_id: item.id)
+        # loadout_item_params[:items_array].each do | item_id |
+        #     item = Item.find(item_id.to_i)
+        #     loadout_item = LoadoutItem.create(loadout_id: loadout_item_params[:loadout_id], item_id: item.id)
             
-        end
-        loadout = Loadout.find(loadout_item_params[:loadout_id])
-        render json: loadout
+        # end
+        # loadout = Loadout.find(loadout_item_params[:loadout_id])
+        # render json: loadout
 
+        if current_user
+            puts 'hello'
+        else
+            render json: {errorr: "You must be logged in to do this action"}, status: :unauthorized
+        end
     end
 
     def destroy
