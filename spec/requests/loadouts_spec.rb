@@ -21,7 +21,7 @@ RSpec.describe "/loadouts", type: :request do
   }
 
   let(:valid_headers) {
-    {"ACCEPT"=> "application/json"}
+    {"Accept"=> "application/json"}
   }
 
   describe "GET /index" do
