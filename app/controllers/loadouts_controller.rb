@@ -17,6 +17,8 @@ class LoadoutsController < ApplicationController
 
     def create
         # Goal is to make sure a loadout can not be created unless they have the correct token
+        # A loadout should only be made if there is a current user.
+        # A loadout should be assigned the user id of the current user it shouldn't be passed back online.
         loadout = Loadout.create(loadout_params)
         if loadout.valid?
             render json: loadout
