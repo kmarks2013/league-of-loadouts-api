@@ -21,7 +21,7 @@ class LoadoutsController < ApplicationController
         # A loadout should be assigned the user id of the current user it shouldn't be passed back online.
 
         if current_user
-            loadout = Loadout.new(loadout_params)
+            loadout = current_user.loadouts.new(loadout_params)
             if loadout && loadout.save
                 render json: loadout, status: :created
             else
@@ -89,7 +89,7 @@ class LoadoutsController < ApplicationController
     private
 
     def loadout_params
-        params.require(:loadout).permit(:champion_id, :name, :user_id)
+        params.require(:loadout).permit(:champion_id, :name)
     end
 
     def loadout_update_params
