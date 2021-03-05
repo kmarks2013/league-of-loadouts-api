@@ -42,10 +42,14 @@ class LoadoutsController < ApplicationController
 
     def destroy 
         # Goal is to make sure a loadout can not be destroyed unless they have the correct token  and it belongs the user who created it
-        loadout = Loadout.find(params[:id])
-        loadout.destroy
-        loadouts = Loadout.all
-        render json: loadouts
+        # A loadout should only be able to be deleted if there is a current user.
+        # and it should only be destroyed if it bleongs to the current user
+        # byebug
+        if current_user
+            byebug
+        else
+            render json: {error: "You must be logged in to preform this action"}
+        end
     end
 
     private
