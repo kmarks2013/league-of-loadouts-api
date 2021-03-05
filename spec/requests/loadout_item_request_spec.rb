@@ -10,6 +10,7 @@ RSpec.describe "LoadoutItems", type: :request do
         @item3 = Item.first_or_create!(name: "Staff")
         @item4 = Item.first_or_create!(name: "Axe")
         @loadout = @current_user.loadouts.create!(name: "Test Loadout", champion: @champion)
+        @condition = User.find(@current_user.id).id == @current_user.id
 
     end
     let(:valid_attributes) do
