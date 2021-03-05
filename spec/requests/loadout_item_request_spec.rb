@@ -54,4 +54,18 @@ RSpec.describe "LoadoutItems", type: :request do
         end
     end
 
+    describe "CREATE /create"
+        context "will check that there is a logged in user" do
+            it "move on to the next step if it finds one" do
+                expect(@condition).to eq true
+            end
+        end
+
+        context 'when there isnt a curent user' do
+            it 'it will return a status of unautorhorized if not' do
+                post loadout_items_url, params: {loadout:valid_attributes}, headers: valid_headers, as: :Json
+                expect(response).to have_http_status :unauthorized
+            end
+        end
+
 end
