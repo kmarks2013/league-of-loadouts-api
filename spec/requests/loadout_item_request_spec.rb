@@ -66,6 +66,14 @@ RSpec.describe "LoadoutItems", type: :request do
                     expect(@current_user.loadouts.first).to eq(@loadout)
                 end
 
+                context 'with valid attributes' do
+                    it 'will create the new loadout items' do
+                        expect{
+                            post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
+                        }.to change(LoadoutItem, :count).by(valid_attributes[:items_array].length)
+                    end
+                end
+
                 context 'it does not belong to the current user' do
                     it "returns with an unauthorized status" do
                         post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
