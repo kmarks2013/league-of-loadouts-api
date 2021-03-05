@@ -12,14 +12,16 @@ class AuthController < ApplicationController
     end
 
     def persist
-        auth = request.headers['Authorization']
-        if auth
-            token = auth.split(" ")[1]
-            decoded_token = JWT.decode(token, hmac_secret, true, {algorithim: "HS256"})
+            if current_user
+                # token = request.headers["Authorization"].split(' ')[1]
+                # decoded_token = JWT.decode(token, hmac_secret, true, {algorithim: "HS256"})
+                # byebug
+                #  User.find(decoded_token[0]['user_id'])
 
-            user = User.find(decoded_token[0]['user_id'])
-            render json: user, include: '**'
-        end
+                render json: current_user, include: '**'
+            else
+                render json: {error: 'You need to be logged in to preform this action'}
+            end
     end
 
     private
