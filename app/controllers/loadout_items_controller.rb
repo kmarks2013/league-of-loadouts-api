@@ -28,7 +28,7 @@ class LoadoutItemsController < ApplicationController
         if current_user
             puts 'hello'
         else
-            render json: {errorr: "You must be logged in to do this action"}, status: :unauthorized
+            render json: {error: "You must be logged in to do this action"}, status: :unauthorized
         end
     end
 
