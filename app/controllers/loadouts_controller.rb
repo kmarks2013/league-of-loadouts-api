@@ -27,6 +27,8 @@ class LoadoutsController < ApplicationController
             else
                 render json: {errors: loadout.errors.full_messages}, status: :unprocessable_entity
             end
+        else
+            render json: {error: "You must be logged in to create a loadout"}, status: :unauthorized
         end
     end
 
