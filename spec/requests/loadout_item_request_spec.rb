@@ -60,6 +60,10 @@ RSpec.describe "LoadoutItems", type: :request do
             it "move on to the next step if it finds one" do
                 expect(@condition).to eq true
             end
+
+            it 'it will check that the loadout being udpated belongs to that user' do
+                expect(@current_user.loadouts.first).to eq(@loadout)
+            end
         end
 
         context 'when there isnt a curent user' do
