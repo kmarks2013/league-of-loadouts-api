@@ -112,4 +112,21 @@ RSpec.describe "LoadoutItems", type: :request do
             end
     end
 
+    describe 'DELETE /destroy' do
+        context 'will check that there is user currently logged in' do
+            it "moves on if there is a current user " do
+                expect(@condition).to eq true
+            end
+
+            context 'when there isnt a curent user' do
+                it 'it will return a status of unautorhorized if not' do
+                    delete loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :Json
+                    expect(!@condition).to eq false
+                    expect(response).to have_http_status :unauthorized
+                end
+            end
+        end
+
+    end
+
 end
