@@ -30,7 +30,9 @@ RSpec.describe "LoadoutItems", type: :request do
 
     describe "GET /index" do
         it "renders the json of all the loadout items" do
+            get loadout_items_url
             expect(response).to be_successful
+            expect(response.content_type).to match(a_string_including("application/json"))
         end
     end
 
