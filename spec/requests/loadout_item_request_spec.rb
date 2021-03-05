@@ -45,6 +45,12 @@ RSpec.describe "LoadoutItems", type: :request do
             @item = Item.find(@loadout_item.id)
         end
 
+        it 'will then show the json of that item to that items show method' do
+            @item = Item.find(@loadout_item.id)
+            get item_url(@item.id)
+            expect(response).to be_successful
+            expect(response.content_type).to match(a_string_including("application/json"))
+        end
     end
 
 end
