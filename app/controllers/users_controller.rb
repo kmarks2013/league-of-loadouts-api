@@ -55,7 +55,7 @@ class UsersController < ApplicationController
             render json: { }
             # render json: { message: 'this account should be deleted' }
         else
-            render json: {error: "Unauthorized Access Restricted"}
+            render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
         end
     end
 
