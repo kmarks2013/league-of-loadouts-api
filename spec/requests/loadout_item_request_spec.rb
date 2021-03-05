@@ -80,6 +80,19 @@ RSpec.describe "LoadoutItems", type: :request do
                         end
                     end
 
+                    context 'with invalid attributes' do
+                        it 'will not create the new loadout itmes' do
+                            expect{
+                                post loadout_items_url, params: {loadout_item:invalid_attributes}, headers: valid_headers, as: :json
+                            }.to change(LoadoutItem, :count).by(0)
+                        end
+                        it "will return the json of the created loadout" do
+                            post loadout_items_url, params: {loadout_item:invalid_attributes}, headers: valid_headers, as: :json
+                            expect(response).to have_http_status :created
+                            expect(response.content_type).to match(a_string_including("application/json"))
+                        end
+                    end
+
                     context 'it does not belong to the current user' do
                         it "returns with an unauthorized status" do
                             post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
