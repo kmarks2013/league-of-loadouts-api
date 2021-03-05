@@ -56,6 +56,7 @@ RSpec.describe "LoadoutItems", type: :request do
     end
 
     describe "CREATE /create"
+    # attemtping to do conditional testing through nested contexts.
         context "will check that there is a logged in user" do
             it "move on to the next step if it finds one" do
                 expect(@condition).to eq true
