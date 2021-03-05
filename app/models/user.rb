@@ -9,8 +9,7 @@ class User < ApplicationRecord
 
 
     validates :username, presence: true
-    validates :username, uniqueness: {message: 
-    "This username has already been taken"}
+    # validates :username, uniqueness: {message: "This username has already been taken"}, case_insensitive: false
     validates :username, :length => { :in => 6..30 }
     
     PASSWORD_FORMAT = /\A
