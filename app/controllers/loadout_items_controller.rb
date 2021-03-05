@@ -46,6 +46,8 @@ class LoadoutItemsController < ApplicationController
             loadout = Loadout.find(loadout_item.loadout_id)
             if loadout.user.id == current_user.id
                 # byebug
+                loadout_item.destroy
+                render json: loadout
             else
                 render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
             end
