@@ -52,13 +52,13 @@ class LoadoutsController < ApplicationController
                 if loadout.update(loadout_update_params)
                     render json: loadout
                 else
-                    render json: {error: loadout.errors.full_messages}
+                    render json: {error: loadout.errors.full_messages}, status: :unprocessable_entity
                 end
             else
-                render json: {error: "Unauthorized Access Restricted"}
+                render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
             end
         else
-            render json: {error: "You must be logged in to preform this action."}
+            render json: {error: "You must be logged in to preform this action."}, status: :unauthorized
         end
         # if loadout.update(loadout_params)
         #     render json: loadout
