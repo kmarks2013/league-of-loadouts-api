@@ -48,8 +48,11 @@ class LoadoutsController < ApplicationController
         if current_user
             loadout = Loadout.find(params[:id])
             if loadout[:user_id] == current_user.id
-                byebug
-              else
+                # byebug
+                # needed to choose between rendering every loadout or rendering the current_users loadouts
+                loadout.destroy
+                render json: Loadout.all, status: :accepted
+            else
                 render json: {error: "Unauthorized Access Restricted"}
             end
         else
