@@ -131,6 +131,13 @@ RSpec.describe "LoadoutItems", type: :request do
                             end
                         end
                     end
+                    context 'it does not belong to the current user' do
+                        it "returns with an unauthorized status" do
+                            @loadout_item  = LoadoutItem.create!(loadout:@loadout, item:@item1)
+                            delete loadout_item_url(@loadout_item.id), headers: valid_headers, as: :json
+                            expect(response).to have_http_status :unauthorized
+                        end
+                    end
                 end
 
             end
