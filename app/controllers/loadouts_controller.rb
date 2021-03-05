@@ -65,4 +65,8 @@ class LoadoutsController < ApplicationController
     def loadout_params
         params.require(:loadout).permit(:champion_id, :name, :user_id)
     end
+
+    def loadout_update_params
+        params.require(:loadout).permit(:name)
+    end
 end
