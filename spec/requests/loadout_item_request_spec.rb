@@ -26,7 +26,7 @@ RSpec.describe "LoadoutItems", type: :request do
     end
     let(:valid_headers)do
         {
-
+            "Accept": "application/json"
         }
     end
 
