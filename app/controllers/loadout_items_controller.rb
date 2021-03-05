@@ -24,7 +24,12 @@ class LoadoutItemsController < ApplicationController
                     item = Item.find(item_id.to_i)
                     loadout_item = LoadoutItem.create(loadout_id: loadout_item_params[:loadout_id], item_id: item.id)
                 end
-                render json: loadout
+                # if loadout.items.length
+                    render json: loadout
+                # else
+                #     render json: {errors: "Items were not added" }, status: :unprocessable_entity
+                # end
+
             else
                 render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
             end
