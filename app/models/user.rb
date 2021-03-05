@@ -5,7 +5,6 @@ class User < ApplicationRecord
 
 #   add active record scoping to order the users by id, or by name
 
-    has_secure_password
 
 
 
