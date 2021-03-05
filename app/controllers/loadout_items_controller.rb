@@ -7,7 +7,8 @@ class LoadoutItemsController < ApplicationController
 
     def show
         loadout_item = LoadoutItem.find(params[:id])
-        render json: loadout_item
+        item = Item.find(loadout_item.id)
+        render json: item
     end
 
     def create
