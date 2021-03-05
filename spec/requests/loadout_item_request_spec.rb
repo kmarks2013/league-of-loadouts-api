@@ -123,8 +123,16 @@ RSpec.describe "LoadoutItems", type: :request do
                         it 'belongs to the current user' do
                             expect(@current_user.loadouts.first).to eq(@loadout)
                         end
+                        context 'it find the item' do
+                            it 'and delete it' do
+                                @loadout_item  = LoadoutItem.create!(loadout:@loadout, item:@item1)
+                                delete loadout_item_url(@loadout_item.id), headers: valid_headers, as: :json
+                                expect(response).to have_http_status :accepted
+                            end
+                        end
                     end
                 end
+
             end
 
             context 'when there isnt a curent user' do
