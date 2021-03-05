@@ -112,6 +112,14 @@ RSpec.describe "Loadouts", type: :request do
         expect(response). to have_http_status :accepted
       end
     end
+
+    context "with invalid attributes" do
+      it "will not update the name of the loadout" do
+        loadout = Loadout.find(@loadout.id)
+        patch loadout_url(loadout), params: {user: invalid_new_attributes}, headers: valid_headers, as: :json
+        expect(response).to have_http_status :unprocessable_entity
+      end
+    end
   end
 
   describe "DELETE /destroy" do
