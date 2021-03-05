@@ -40,6 +40,7 @@ class LoadoutItemsController < ApplicationController
 
     def destroy
         # Goal is to make sure a loadout item can not be deleted unless there is a valid auth token and the loadout belongs to that user.
+        # conditional layers: current user, loadout ownership loadout item will find its own loadout.
         if current_user
             byebug
         else
