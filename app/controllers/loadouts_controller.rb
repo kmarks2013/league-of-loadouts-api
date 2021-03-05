@@ -10,6 +10,10 @@ class LoadoutsController < ApplicationController
         render json: loadout
     end
 
+    def new
+        loadout = Loadout.new
+    end
+
     def create
         # Goal is to make sure a loadout can not be created unless they have the correct token
         loadout = Loadout.create(loadout_params)
