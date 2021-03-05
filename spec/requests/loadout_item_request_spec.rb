@@ -55,41 +55,47 @@ RSpec.describe "LoadoutItems", type: :request do
         end
     end
 
-    describe "CREATE /create"
-    # attemtping to do conditional testing through nested contexts.
-        context "will check that there is a logged in user" do
-            it "move on to the next step if it finds one" do
-                expect(@condition).to eq true
-            end
-
-            context "it will check the ownership of hte loadout" do
-                it 'belongs to the current user' do
-                    expect(@current_user.loadouts.first).to eq(@loadout)
+    describe "CREATE /create" do
+        # attemtping to do conditional testing through nested contexts.
+            context "will check that there is a logged in user" do
+                it "move on to the next step if it finds one" do
+                    expect(@condition).to eq true
                 end
 
-                context 'with valid attributes' do
-                    it 'will create the new loadout items' do
-                        expect{
+                context "it will check the ownership of hte loadout" do
+                    it 'belongs to the current user' do
+                        expect(@current_user.loadouts.first).to eq(@loadout)
+                    end
+
+                    context 'with valid attributes' do
+                        it 'will create the new loadout items' do
+                            expect{
+                                post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
+                            }.to change(LoadoutItem, :count).by(valid_attributes[:items_array].length)
+                        end
+                        it "will return the json of the created loadout" do
                             post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
-                        }.to change(LoadoutItem, :count).by(valid_attributes[:items_array].length)
+                            expect(response).to have_http_status :created
+                            expect(response.content_type).to match(a_string_including("application/json"))
+                        end
+                    end
+
+                    context 'it does not belong to the current user' do
+                        it "returns with an unauthorized status" do
+                            post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
+                            expect(response).to have_http_status :unauthorized
+                        end
                     end
                 end
 
-                context 'it does not belong to the current user' do
-                    it "returns with an unauthorized status" do
-                        post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :json
-                        expect(response).to have_http_status :unauthorized
-                    end
+            end
+
+            context 'when there isnt a curent user' do
+                it 'it will return a status of unautorhorized if not' do
+                    post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :Json
+                    expect(response).to have_http_status :unauthorized
                 end
             end
-
-        end
-
-        context 'when there isnt a curent user' do
-            it 'it will return a status of unautorhorized if not' do
-                post loadout_items_url, params: {loadout_item:valid_attributes}, headers: valid_headers, as: :Json
-                expect(response).to have_http_status :unauthorized
-            end
-        end
+    end
 
 end
