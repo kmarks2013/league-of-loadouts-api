@@ -43,6 +43,7 @@ RSpec.describe "/loadouts", type: :request do
 
   describe "POST /create" do
     # context "is the current user", if: @condition do
+    context "with valid attributes " do
       it "will add a loadout to the current user" do
         loadout = @current_user.loadouts.create!(valid_attributes)
         expect{
@@ -58,6 +59,11 @@ RSpec.describe "/loadouts", type: :request do
       #   need to return back to this test to work on getting it to pass with a conditional
       end
     # end
+    end
+
+    context "with invalid attributes" do
+      it "will not add a loadout to the database"
+    end
   end
 
 end
