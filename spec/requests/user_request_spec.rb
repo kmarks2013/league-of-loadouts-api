@@ -150,9 +150,11 @@ RSpec.describe "Users", type: :request do
         end
 
         context 'when the current user and the user do not match', if: !@condition do
-            user = User.create!(name: "Testor", username: "testuser", password:'Testpass1!', age: 23)
-            delete user_url(user), headers:valid_headers, as: :json
-            expect(response).to have_http_status :unauthorized
+            it "won't delete the user from the database" do
+                user = User.create!(name: "Testor", username: "testuser", password:'Testpass1!', age: 23)
+                delete user_url(user), headers:valid_headers, as: :json
+                expect(response).to have_http_status :unauthorized
+            end
         end
     end
 end
