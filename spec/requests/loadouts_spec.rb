@@ -42,12 +42,20 @@ RSpec.describe "/loadouts", type: :request do
   end
 
   describe "POST /create" do
-    # context "if it is the current user", if: @condition do
+    # context "is the current user", if: @condition do
       it "will add a loadout to the current user" do
         loadout = @current_user.loadouts.create!(valid_attributes)
         expect{
           post loadouts_url, params: {loadout: loadout}, headers: valid_headers, as: :json
         }.to change(Loadout, :count).by(0)
+      end
+
+      it 'renders the json of new loadout' do
+        loadout = @current_user.loadouts.create!(valid_attributes)
+        post loadouts_url, params: {loadout: loadout}, headers: valid_headers, as: :json
+        expect(response).to be_successful
+      #   expect(response.content_type).to match(a_string_including("application/json"))
+      #   need to return back to this test to work on getting it to pass with a conditional
       end
     # end
   end
