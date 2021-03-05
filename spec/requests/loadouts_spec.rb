@@ -17,6 +17,7 @@ RSpec.describe "/loadouts", type: :request do
   before(:each) do
     @current_user = User.first_or_create!(username:'testname', password:"Test1234!", name: 'test', age: 23)
     @champion = Champion.first_or_create!(name: "Champion")
+    @condition = @current_user
   end
 
   let(:valid_attributes) do
@@ -53,9 +54,12 @@ RSpec.describe "/loadouts", type: :request do
   end
 
   describe "POST /create" do
-    context "if it is the current user", if: condition do
-      it "will add a loadout to that user" do
-        
+    context "if it is the current user", if: @condition do
+      it "will add a loadout to the current user" do
+        loadout = @current_user.loadouts.create!(valid_attributes)
+        expect{
+          post loadouts_url, params: {loadout: loadout}, headers: valid_headers, as: :json
+        }.to change(Loadout, :count).by(0)
       end
     end
   end
