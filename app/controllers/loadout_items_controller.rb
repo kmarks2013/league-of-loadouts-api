@@ -42,7 +42,13 @@ class LoadoutItemsController < ApplicationController
         # Goal is to make sure a loadout item can not be deleted unless there is a valid auth token and the loadout belongs to that user.
         # conditional layers: current user, loadout ownership loadout item will find its own loadout.
         if current_user
-            byebug
+            loadout_item = LoadoutItem.find(params[:id])
+            loadout = Loadout.find(loadout_item.loadout_id)
+            if loadout.user.id == current_user.id
+                # byebug
+            else
+                render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
+            end
         else
             render json: {error: "You must be logged in to do this action"}, status: :unauthorized
         end
