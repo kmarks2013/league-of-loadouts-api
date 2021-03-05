@@ -21,7 +21,7 @@ RSpec.describe "LoadoutItems", type: :request do
     end
     let(:invalid_attributes) do
         {
-
+            loadout_id: ''
         }
     end
     let(:valid_headers)do
