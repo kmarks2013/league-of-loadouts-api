@@ -34,10 +34,20 @@ class LoadoutsController < ApplicationController
 
     def update
         # Goal is to make sure a user can not be updated unless they have the correct token and it belongs the user who created it
-        loadout = Loadout.find(params[:id])
-        if loadout.update(loadout_params)
-            render json: loadout
-        end
+        # A loadout should only be updated if there is a current user.
+        # then the update sould only take place if the loadout out belongs to that current user
+
+        # update should rebuild the loadout object with hte id being params:id, the user_id being current_user id, and the champion_id should be set from the params[champion:id]:
+        # {
+        #  id: params[:id],
+        #  user_id: current_user.id,
+        #  champion_id: params[:champion_id],
+        #  name: loadout_update_params
+        # }
+        # if loadout.update(loadout_params)
+        #     render json: loadout
+        # end
+        # byebug
     end
 
     def destroy 
