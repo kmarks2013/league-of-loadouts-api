@@ -60,7 +60,7 @@ RSpec.describe "Loadouts", type: :request do
           expect(response).to be_successful
           # expect(response.content_type).to match(a_string_including("application/json"))
           # need to return back to this test to work on getting it to pass with a conditional
-          # currently this test is failing because the conditionall wil not run
+    # currently this test is not working properly because the conditionall wil not recognize the test
       end
     end
     # end
@@ -76,7 +76,7 @@ RSpec.describe "Loadouts", type: :request do
       it 'renders json of the errors' do
         post loadouts_url, params: {loadout: invalid_attributes}, headers: valid_headers, as: :json
         expect(response).to have_http_status :unprocessable_entity
-        # currently this test is failing because the conditionall wil not run
+    # currently this test is not working properly because the conditionall wil not recognize the test
       end
     end
 
@@ -131,8 +131,8 @@ RSpec.describe "Loadouts", type: :request do
           expect(response).to have_http_status :accepted
         end
       end
-    # currently this test is not working properly because the conditionall wil not run
-    end
+    # currently this test is not working properly because the conditionall wil not recognize the test
+  end
 
     context "when there isn't a current user " do
       it 'will not delete the loadout' do
@@ -143,7 +143,7 @@ RSpec.describe "Loadouts", type: :request do
         expect(response).to have_http_status :unauthorized
       end
     end
-    # currently this test is not working properly because the conditionall wil not run
+    # currently this test is not working properly because the conditionall wil not recognize the test
   end
 
 end
