@@ -37,4 +37,14 @@ RSpec.describe "LoadoutItems", type: :request do
         end
     end
 
+    describe "GET /show/:id" do
+        before(:each)do
+        @loadout_item  = LoadoutItem.create!( loadout:@loadout, item:@item1)
+    end
+    it 'finds the Loadout Item in the Items table' do
+        @item = Item.find(@loadout_item.id)
+    end
+
+    end
+
 end
