@@ -114,8 +114,10 @@ RSpec.describe "LoadoutItems", type: :request do
 
     describe 'DELETE /destroy' do
         context 'will check that there is user currently logged in' do
-            it "moves on if there is a current user " do
-                expect(@condition).to eq true
+            context "whern there is a user" do
+                it "moves on if there is a current user " do
+                    expect(@condition).to eq true
+                end
             end
 
             context 'when there isnt a curent user' do
