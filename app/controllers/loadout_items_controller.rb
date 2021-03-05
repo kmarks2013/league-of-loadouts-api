@@ -17,8 +17,8 @@ class LoadoutItemsController < ApplicationController
         # Loadout Item should only be added to a corresponding loadout and when the loadout belongs to the current user.
         # Loadout id should be added
         # byebug
-        loadout = Loadout.find(loadout_item_params[:loadout_id])
         if current_user
+            loadout = Loadout.find(loadout_item_params[:loadout_id])
             if loadout.user.id === current_user.id
                 loadout_item_params[:items_array].each do | item_id |
                     item = Item.find(item_id.to_i)
