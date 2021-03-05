@@ -59,9 +59,10 @@ RSpec.describe "Loadouts", type: :request do
           post loadouts_url, params: {loadout: valid_attributes}, headers: valid_headers, as: :json
           expect(response).to be_successful
           # expect(response.content_type).to match(a_string_including("application/json"))
-        #   need to return back to this test to work on getting it to pass with a conditional
-        end
+          # need to return back to this test to work on getting it to pass with a conditional
+          # currently this test is failing because the conditionall wil not run
       end
+    end
     # end
 
     context "with invalid attributes" do
