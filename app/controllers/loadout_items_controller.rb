@@ -26,7 +26,11 @@ class LoadoutItemsController < ApplicationController
         # render json: loadout
 
         if current_user
-            puts 'hello'
+            if loadout.user.id === current_user
+                puts 'loadout belongs to user'
+            else
+                render json: {error: "Unauthorized Access Restricted"}, status: :unauthorized
+            end
         else
             render json: {error: "You must be logged in to do this action"}, status: :unauthorized
         end
