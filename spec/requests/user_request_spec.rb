@@ -82,6 +82,7 @@ RSpec.describe "Users", type: :request do
             @current_user = User.create!(valid_attributes)
             @condition = User.find(@current_user.id).id == @current_user.id
         end
+
         let(:new_attributes) do
             {
                 "name" => "New name",
@@ -89,6 +90,7 @@ RSpec.describe "Users", type: :request do
                 "username" => "newTestUsername"
             }
         end
+
         let(:invalid_new_attributes) do
             {
                 "name" => "New name",
@@ -96,6 +98,7 @@ RSpec.describe "Users", type: :request do
                 "username" => ""
             }
         end
+
         context ' With permitted user' do
             context "with valid new_attributes", if: @condition do
                 it 'will then update the requested user' do
@@ -120,6 +123,7 @@ RSpec.describe "Users", type: :request do
             end
 
         end
+
         context 'With unpermitted user' do
             context 'it will check if the current useer is the user to be updated', if: !@condition do
                 it 'will not update the user' do
