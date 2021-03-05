@@ -101,7 +101,7 @@ RSpec.describe "Loadouts", type: :request do
     end
 
     context "with valid attributes" do
-      it "will then update the name of the loadout" do
+      it "will update the name of the loadout" do
         loadout = Loadout.find(@loadout.id)
         patch loadout_url(loadout), params: {user: new_attributes}, headers: valid_headers, as: :json
         loadout.reload
