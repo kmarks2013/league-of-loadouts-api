@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     def update
         # add a guard cluase to render the error unless there is a current user?
         user = User.find(params[:id])
-            # byebug
         if user.id == current_user.id
             user.update!(update_params)
             render json: user, include: '**', status: :accepted
