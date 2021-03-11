@@ -24,11 +24,12 @@ class UsersController < ApplicationController
     def update
         # Finding the user using the current user's id because when update fails on the current user the errors comes back as an empty object
         # this current update funciton will always find the current user and update them it doesn't error out if it tries to update the wrong user. need to fix this
-
-        user = User.find(current_user.id)
-        if user.update!(update_params)
-            render json: user, include: '**', status: :accepted
-        end
+        user = User.find(params[:id])
+        byebug
+        # user = User.find(current_user.id)
+        # if user.update!(update_params)
+        #     render json: user, include: '**', status: :accepted
+        # end
     end
     
     def destroy
