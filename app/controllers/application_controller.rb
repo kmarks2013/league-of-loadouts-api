@@ -30,7 +30,6 @@ class ApplicationController < ActionController::API
 
     private
     def not_found(e)
-        # look into how to add logic for if this is a deletion or an updat or if the record exists at all or not?
         render json: {error: "Unautorized Access Restricted"}, status: :unauthorized
     end
 
