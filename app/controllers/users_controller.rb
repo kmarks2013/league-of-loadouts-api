@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     end
 
     def update
+        # add a guard cluase to render the error unless there is a current user?
         # Finding the user using the current user's id because when update fails on the current user the errors comes back as an empty object
         # this current update funciton will always find the current user and update them it doesn't error out if it tries to update the wrong user. need to fix this
         user = User.find(params[:id])
