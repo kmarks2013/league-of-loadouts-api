@@ -34,7 +34,6 @@ class UsersController < ApplicationController
     end
     
     def destroy
-    #    this will have the same problem as the udpate action
         user = User.find(params[:id])
         if user.id == current_user.id
             user.destroy!
