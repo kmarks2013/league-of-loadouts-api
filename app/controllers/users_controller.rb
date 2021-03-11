@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
     def index
         users= User.all
-        render json: users.ordered_by_name
+        render json: users.ordered_by_id
     end
 
     def show
