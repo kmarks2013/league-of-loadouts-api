@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     end
 
     def create 
-        user = User.create!(user_params)
-        if user.valid?
+        user = User.new(user_params)
+        if user.save!
             payload = {user_id: user.id}
             token = JWT.encode(payload, hmac_secret, 'HS256')
             render json: {user: user, token: token}, status: :created
