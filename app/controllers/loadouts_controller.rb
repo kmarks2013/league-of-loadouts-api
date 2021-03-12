@@ -13,8 +13,8 @@ class LoadoutsController < ApplicationController
     end
 
     def create
-        loadout = current_user.loadouts.create!(loadout_params)
-        if loadout.valid?
+        loadout = current_user.loadouts.new(loadout_params)
+        if loadout.save!
             render json: loadout, status: :created
         end
     end
