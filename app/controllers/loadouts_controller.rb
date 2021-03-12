@@ -12,10 +12,6 @@ class LoadoutsController < ApplicationController
         render json: loadout
     end
 
-    def new
-        loadout = Loadout.new
-    end
-
     def create
         loadout = current_user.loadouts.create!(loadout_params)
         if loadout.valid?
