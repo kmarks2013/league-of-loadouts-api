@@ -33,7 +33,6 @@ class LoadoutItemsController < ApplicationController
     private
 
     def loadout_item_params
-        pp 'hi'
         params.require(:loadout_item).permit([:loadout_id, items_array: []])
     end
 
